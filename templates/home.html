@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+{% load static shop_tags %}
+
+{% block title %}ShopWave — Premium Online Store | Shop Electronics, Fashion & More{% endblock %}
+
+{% block content %}
+
+<!-- ===== HERO SECTION ===== -->
+<section class="sw-hero">
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  <div class="container">
+    <div class="row align-items-center min-vh-85">
+      <div class="col-lg-6 hero-content animate__animated animate__fadeInLeft">
+        <span class="hero-badge"><i class="bi bi-lightning-fill me-1"></i>New Season Sale — Up to 70% Off</span>
+        <h1 class="hero-title">Discover <span class="gradient-text">Premium</span> Products for Every Lifestyle</h1>
+        <p class="hero-subtitle">From cutting-edge electronics to trendy fashion — find everything you love, at prices you'll adore. Free shipping on orders over ₹999.</p>
+        <div class="hero-actions d-flex gap-3 flex-wrap">
+          <a href="{% url 'shop' %}" class="btn sw-btn-primary btn-lg px-5">
+            <i class="bi bi-bag-fill me-2"></i>Shop Now
+          </a>
+          <a href="{% url 'shop' %}?sort=popular" class="btn sw-btn-outline-light btn-lg px-5">
+            <i class="bi bi-fire me-2"></i>Explore Products
+          </a>
+        </div>
+        <div class="hero-stats d-flex gap-4 mt-5">
+          <div class="stat-item">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Products</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">200K+</div>
+            <div class="stat-label">Customers</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">4.9★</div>
+            <div class="stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block text-center animate__animated animate__fadeInRight">
+        <div class="hero-image-wrap">
+          <div class="hero-circle"></div>
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80" alt="Premium Shopping" class="hero-img" />
+          <div class="hero-floating-card card-1">
+            <i class="bi bi-truck-front-fill text-primary"></i>
+            <span>Free Shipping</span>
+          </div>
+          <div class="hero-floating-card card-2">
+            <i class="bi bi-shield-check-fill text-success"></i>
+            <span>Secure Pay</span>
+          </div>
+          <div class="hero-floating-card card-3">
+            <i class="bi bi-arrow-counterclockwise text-warning"></i>
+            <span>Easy Returns</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CATEGORIES SECTION ===== -->
+<section class="sw-section bg-light-gray" id="categories">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <span class="section-badge">Browse</span>
+      <h2 class="section-title">Shop by <span class="gradient-text">Category</span></h2>
+      <p class="section-subtitle">Explore our wide range of product categories</p>
+    </div>
+
+    <div class="row g-3">
+      {% for category in categories %}
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="{% url 'shop' %}?category={{ category.slug }}" class="category-card">
+          <div class="category-icon-wrap">
+            {% if category.icon %}
+              <i class="{{ category.icon }} category-icon"></i>
+            {% else %}
+              <i class="bi bi-grid category-icon"></i>
+            {% endif %}
+          </div>
+          <div class="category-name">{{ category.name }}</div>
+          <div class="category-count">{{ category.get_product_count }} items</div>
+        </a>
+      </div>
+      {% empty %}
+      <!-- Fallback static categories -->
+      <div class="col-6 col-md-4 col-lg-2"><div class="category-card"><div class="category-icon-wrap"><i class="bi bi-phone category-icon"></i></div><div class="category-name">Electronics</div></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="category-card"><div class="category-icon-wrap"><i class="bi bi-bag category-icon"></i></div><div class="category-name">Fashion</div></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="category-card"><div class="category-icon-wrap"><i class="bi bi-stars category-icon"></i></div><div class="category-name">Beauty</div></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="category-card"><div class="category-icon-wrap"><i class="bi bi-trophy category-icon"></i></div><div class="category-name">Sports</div></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="category-card"><div class="category-icon-wrap"><i class="bi bi-house-heart category-icon"></i></div><div class="category-name">Home</div></div></div>
+      <div class="col-6 col-md-4 col-lg-2"><div class="category-card"><div class="category-icon-wrap"><i class="bi bi-cpu category-icon"></i></div><div class="category-name">Gadgets</div></div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED PRODUCTS ===== -->
+<section class="sw-section" id="featured">
+  <div class="container">
+    <div class="section-header d-flex align-items-center justify-content-between mb-5">
+      <div>
+        <span class="section-badge">Handpicked</span>
+        <h2 class="section-title mb-0">Featured <span class="gradient-text">Products</span></h2>
+      </div>
+      <a href="{% url 'shop' %}?sort=latest" class="btn sw-btn-outline">View All <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+
+    <div class="row g-4">
+      {% for product in featured_products %}
+        {% include 'partials/product_card.html' with product=product %}
+      {% empty %}
+      <div class="col-12 text-center py-5">
+        <i class="bi bi-box-seam display-1 text-muted"></i>
+        <p class="text-muted mt-3">No featured products yet. Add products from the admin panel.</p>
+        <a href="{% url 'shop' %}" class="btn sw-btn-primary mt-2">Browse All Products</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFFER BANNER ===== -->
+<section class="sw-offer-banner">
+  <div class="container">
+    <div class="offer-card">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <span class="offer-tag">🔥 Limited Time Offer</span>
+          <h2 class="offer-title">Mega Sale — Up to <span>70% OFF</span></h2>
+          <p class="offer-subtitle">Don't miss out on our biggest sale of the season. Premium products at unbelievable prices.</p>
+          <div class="countdown d-flex gap-3 my-4" id="countdown">
+            <div class="countdown-item"><span id="cdDays">00</span><label>Days</label></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-item"><span id="cdHours">00</span><label>Hours</label></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-item"><span id="cdMins">00</span><label>Mins</label></div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-item"><span id="cdSecs">00</span><label>Secs</label></div>
+          </div>
+          <a href="{% url 'shop' %}" class="btn sw-btn-white btn-lg px-5">
+            <i class="bi bi-bag-fill me-2"></i>Shop the Sale
+          </a>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block text-center">
+          <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=500&q=80" alt="Mega Sale" class="offer-img" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEW ARRIVALS ===== -->
+<section class="sw-section bg-light-gray" id="new-arrivals">
+  <div class="container">
+    <div class="section-header d-flex align-items-center justify-content-between mb-5">
+      <div>
+        <span class="section-badge">Just In</span>
+        <h2 class="section-title mb-0">New <span class="gradient-text">Arrivals</span></h2>
+      </div>
+      <a href="{% url 'shop' %}?is_new=true" class="btn sw-btn-outline">View All <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+    <div class="row g-4">
+      {% for product in new_arrivals %}
+        {% include 'partials/product_card.html' with product=product %}
+      {% empty %}
+      <div class="col-12 text-center py-4">
+        <p class="text-muted">New arrivals coming soon!</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEST SELLERS ===== -->
+<section class="sw-section" id="best-sellers">
+  <div class="container">
+    <div class="section-header d-flex align-items-center justify-content-between mb-5">
+      <div>
+        <span class="section-badge">Top Picks</span>
+        <h2 class="section-title mb-0">Best <span class="gradient-text">Sellers</span></h2>
+      </div>
+      <a href="{% url 'shop' %}?sort=popular" class="btn sw-btn-outline">View All <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+    <div class="row g-4">
+      {% for product in best_sellers %}
+        {% include 'partials/product_card.html' with product=product %}
+      {% empty %}
+      <div class="col-12 text-center py-4">
+        <p class="text-muted">Best sellers loading soon!</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section class="sw-section bg-light-gray" id="about-section">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <span class="section-badge">Our Promise</span>
+      <h2 class="section-title">Why Choose <span class="gradient-text">ShopWave?</span></h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon-wrap"><i class="bi bi-truck-front-fill feature-icon"></i></div>
+          <h5 class="feature-title">Free Shipping</h5>
+          <p class="feature-text">Free delivery on orders above ₹999. Fast, reliable, nationwide shipping.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon-wrap"><i class="bi bi-shield-lock-fill feature-icon"></i></div>
+          <h5 class="feature-title">Secure Payment</h5>
+          <p class="feature-text">100% secure transactions with industry-standard encryption and trusted gateways.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon-wrap"><i class="bi bi-arrow-counterclockwise feature-icon"></i></div>
+          <h5 class="feature-title">Easy Returns</h5>
+          <p class="feature-text">Not satisfied? Return within 30 days for a full refund — no questions asked.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-card">
+          <div class="feature-icon-wrap"><i class="bi bi-headset feature-icon"></i></div>
+          <h5 class="feature-title">24/7 Support</h5>
+          <p class="feature-text">Our dedicated support team is always available to help you anytime, anywhere.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="sw-section" id="reviews">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <span class="section-badge">Reviews</span>
+      <h2 class="section-title">What Our <span class="gradient-text">Customers Say</span></h2>
+    </div>
+    <div class="row g-4">
+      {% if reviews %}
+        {% for review in reviews %}
+        <div class="col-md-6 col-lg-4">
+          <div class="testimonial-card">
+            <div class="d-flex align-items-center mb-3">
+              <div class="testimonial-avatar">{{ review.user.first_name|first|upper }}{{ review.user.last_name|first|upper }}</div>
+              <div class="ms-3">
+                <div class="fw-600">{{ review.user.get_full_name|default:review.user.username }}</div>
+                <div class="review-stars">
+                  {% with review.rating|to_int as r %}
+                    {% for i in "12345" %}
+                      {% if forloop.counter <= r %}<i class="bi bi-star-fill"></i>{% else %}<i class="bi bi-star"></i>{% endif %}
+                    {% endfor %}
+                  {% endwith %}
+                </div>
+              </div>
+            </div>
+            <p class="testimonial-text">"{{ review.comment|truncatewords:30 }}"</p>
+            <div class="testimonial-product text-muted small">
+              <i class="bi bi-bag-check me-1"></i>{{ review.product.name }}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+      <!-- Static testimonials -->
+      {% for tdata in testimonials_static %}
+      <div class="col-md-6 col-lg-4">
+        <div class="testimonial-card">
+          <div class="d-flex align-items-center mb-3">
+            <div class="testimonial-avatar">{{ tdata.initials }}</div>
+            <div class="ms-3">
+              <div class="fw-600">{{ tdata.name }}</div>
+              <div class="review-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            </div>
+          </div>
+          <p class="testimonial-text">"{{ tdata.review }}"</p>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="sw-newsletter">
+  <div class="container">
+    <div class="newsletter-card text-center">
+      <div class="newsletter-icon"><i class="bi bi-envelope-heart-fill"></i></div>
+      <h2 class="newsletter-title">Stay in the Loop!</h2>
+      <p class="newsletter-subtitle">Subscribe to get exclusive deals, new arrivals, and flash sale alerts directly to your inbox.</p>
+      <form class="newsletter-form d-flex gap-3 justify-content-center flex-wrap" onsubmit="subscribeNewsletter(event)">
+        {% csrf_token %}
+        <input type="email" class="form-control newsletter-input" placeholder="Enter your email address" required />
+        <button type="submit" class="btn sw-btn-primary px-5">
+          <i class="bi bi-send-fill me-2"></i>Subscribe
+        </button>
+      </form>
+      <p class="newsletter-note mt-3"><i class="bi bi-lock-fill me-1"></i>No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Countdown timer — ends 3 days from now
+const saleEnd = new Date();
+saleEnd.setDate(saleEnd.getDate() + 3);
+saleEnd.setHours(23, 59, 59);
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = saleEnd - now;
+  if (diff <= 0) return;
+  const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const s = Math.floor((diff % (1000 * 60)) / 1000);
+  document.getElementById('cdDays').textContent = String(d).padStart(2,'0');
+  document.getElementById('cdHours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cdMins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cdSecs').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+{% endblock %}

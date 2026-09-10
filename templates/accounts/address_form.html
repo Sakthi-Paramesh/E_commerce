@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }} — ShopWave{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="checkout-section">
+        <div class="d-flex align-items-center gap-3 mb-4">
+          <a href="{% url 'profile' %}" class="btn sw-btn-outline btn-sm"><i class="bi bi-arrow-left"></i></a>
+          <h4 class="fw-700 mb-0">{{ title }}</h4>
+        </div>
+        <form method="POST">
+          {% csrf_token %}
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-600">Address Type</label>{{ form.address_type }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-600">Full Name</label>{{ form.full_name }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-600">Phone</label>{{ form.phone }}
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-600">Street Address</label>{{ form.address_line1 }}
+            </div>
+            <div class="col-12">
+              <label class="form-label fw-600">Apt / Floor (optional)</label>{{ form.address_line2 }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-600">City</label>{{ form.city }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-600">State</label>{{ form.state }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-600">PIN Code</label>{{ form.pincode }}
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-600">Country</label>{{ form.country }}
+            </div>
+            <div class="col-12">
+              <div class="form-check">{{ form.is_default }} <label class="form-check-label">Set as default address</label></div>
+            </div>
+            <div class="col-12 d-flex gap-3">
+              <button type="submit" class="btn sw-btn-primary px-5"><i class="bi bi-check2 me-1"></i>Save Address</button>
+              <a href="{% url 'profile' %}?tab=addresses" class="btn sw-btn-outline px-5">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

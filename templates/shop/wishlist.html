@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}My Wishlist — ShopWave{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb sw-breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active">My Wishlist</li>
+    </ol>
+  </nav>
+
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <h2 class="fw-700 mb-0"><i class="bi bi-heart-fill me-2 text-danger"></i>My Wishlist <span class="text-muted fw-400 fs-5">({{ items.count }} items)</span></h2>
+    {% if items %}<a href="{% url 'shop' %}" class="btn sw-btn-outline btn-sm"><i class="bi bi-plus me-1"></i>Continue Shopping</a>{% endif %}
+  </div>
+
+  {% if items %}
+  <div class="row g-4">
+    {% for item in items %}
+    <div class="col-md-6 col-lg-4" id="wishlistItem{{ item.pk }}">
+      <div class="wishlist-card">
+        <a href="{% url 'product_detail' item.product.slug %}">
+          {% if item.product.primary_image %}
+            <img src="{{ item.product.primary_image.image.url }}" alt="{{ item.product.name }}" class="wishlist-img" />
+          {% else %}
+            <img src="https://via.placeholder.com/400x300/f8f9fa/6c757d?text={{ item.product.name|urlencode }}" alt="{{ item.product.name }}" class="wishlist-img" />
+          {% endif %}
+        </a>
+        <div class="wishlist-info p-3">
+          <div class="text-muted small">{{ item.product.category.name }}</div>
+          <a href="{% url 'product_detail' item.product.slug %}" class="wishlist-name">{{ item.product.name|truncatechars:50 }}</a>
+          <div class="mt-2">
+            {% if item.product.discount_price %}
+              <span class="fw-700 text-primary fs-5">₹{{ item.product.discount_price }}</span>
+              <span class="text-muted text-decoration-line-through ms-2">₹{{ item.product.price }}</span>
+              <span class="badge sw-badge-discount ms-1">-{{ item.product.discount_percentage }}%</span>
+            {% else %}
+              <span class="fw-700 text-primary fs-5">₹{{ item.product.price }}</span>
+            {% endif %}
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn sw-btn-primary btn-sm flex-fill"
+                    onclick="moveToCart({{ item.product.pk }}, {{ item.pk }})">
+              <i class="bi bi-cart-plus me-1"></i>Move to Cart
+            </button>
+            <button class="btn btn-outline-danger btn-sm"
+                    onclick="removeWishlistItem({{ item.product.pk }}, {{ item.pk }})">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state text-center py-5">
+    <i class="bi bi-heart display-1 text-muted"></i>
+    <h4 class="mt-4">Your Wishlist is Empty</h4>
+    <p class="text-muted">Save your favourite products here and shop them later.</p>
+    <a href="{% url 'shop' %}" class="btn sw-btn-primary mt-3 px-5">
+      <i class="bi bi-shop me-2"></i>Explore Products
+    </a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function moveToCart(productId, itemId) {
+  fetch("{% url 'wishlist_to_cart' %}", {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken') },
+    body: JSON.stringify({ product_id: productId })
+  }).then(r => r.json()).then(data => {
+    if (data.success) {
+      const el = document.getElementById('wishlistItem' + itemId);
+      el.style.opacity = '0'; el.style.transition = 'opacity 0.3s ease';
+      setTimeout(() => { el.remove(); updateNavCartCount(data.cart_count); showToast('success', data.message); }, 300);
+    }
+  });
+}
+
+function removeWishlistItem(productId, itemId) {
+  fetch("{% url 'toggle_wishlist' %}", {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken') },
+    body: JSON.stringify({ product_id: productId })
+  }).then(r => r.json()).then(data => {
+    if (data.success) {
+      const el = document.getElementById('wishlistItem' + itemId);
+      el.style.opacity = '0'; el.style.transition = 'opacity 0.3s ease';
+      setTimeout(() => { el.remove(); showToast('info', data.message); }, 300);
+    }
+  });
+}
+</script>
+{% endblock %}

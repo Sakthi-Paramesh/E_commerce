@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% block title %}My Profile — ShopWave{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row g-4">
+    <!-- Sidebar -->
+    <div class="col-lg-3">
+      <div class="profile-sidebar">
+        <div class="profile-avatar-wrap text-center mb-4">
+          {% if profile.avatar %}
+            <img src="{{ profile.avatar.url }}" alt="Avatar" class="profile-avatar-lg" />
+          {% else %}
+            <div class="profile-avatar-initials-lg">
+              {{ user.first_name|first|upper }}{{ user.last_name|first|upper }}
+            </div>
+          {% endif %}
+          <div class="mt-3">
+            <div class="fw-700 fs-5">{{ user.get_full_name|default:user.username }}</div>
+            <div class="text-muted small">{{ user.email }}</div>
+          </div>
+        </div>
+        <nav class="profile-nav">
+          <a href="?tab=overview" class="profile-nav-link {% if active_tab == 'overview' %}active{% endif %}">
+            <i class="bi bi-person-circle"></i>Overview
+          </a>
+          <a href="?tab=orders" class="profile-nav-link {% if active_tab == 'orders' %}active{% endif %}">
+            <i class="bi bi-bag-check"></i>My Orders
+          </a>
+          <a href="?tab=wishlist" class="profile-nav-link">
+            <i class="bi bi-heart"></i>Wishlist
+          </a>
+          <a href="?tab=addresses" class="profile-nav-link {% if active_tab == 'addresses' %}active{% endif %}">
+            <i class="bi bi-geo-alt"></i>Saved Addresses
+          </a>
+          <a href="{% url 'edit_profile' %}" class="profile-nav-link">
+            <i class="bi bi-pencil-square"></i>Edit Profile
+          </a>
+          <a href="{% url 'change_password' %}" class="profile-nav-link">
+            <i class="bi bi-lock"></i>Change Password
+          </a>
+          <a href="{% url 'logout' %}" class="profile-nav-link text-danger">
+            <i class="bi bi-box-arrow-right"></i>Logout
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="col-lg-9">
+      {% if active_tab == 'overview' %}
+      <!-- Overview -->
+      <div class="row g-4 mb-4">
+        <div class="col-md-3 col-6">
+          <div class="profile-stat-card text-center">
+            <div class="stat-icon text-primary"><i class="bi bi-bag-check-fill"></i></div>
+            <div class="stat-num">{{ orders.count }}</div>
+            <div class="stat-lbl">Orders</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="profile-stat-card text-center">
+            <div class="stat-icon text-danger"><i class="bi bi-heart-fill"></i></div>
+            <div class="stat-num">{% if user.wishlist %}{{ user.wishlist.items.count }}{% else %}0{% endif %}</div>
+            <div class="stat-lbl">Wishlist</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="profile-stat-card text-center">
+            <div class="stat-icon text-success"><i class="bi bi-geo-alt-fill"></i></div>
+            <div class="stat-num">{{ addresses.count }}</div>
+            <div class="stat-lbl">Addresses</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="profile-stat-card text-center">
+            <div class="stat-icon text-warning"><i class="bi bi-star-fill"></i></div>
+            <div class="stat-num">{{ user.reviews.count }}</div>
+            <div class="stat-lbl">Reviews</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="checkout-section">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h5 class="fw-700 mb-0">Recent Orders</h5>
+          <a href="{% url 'order_list' %}" class="text-primary small">View All</a>
+        </div>
+        {% if orders %}
+        {% for order in orders|slice:":5" %}
+        <div class="order-list-card mb-3">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+              <span class="fw-600 text-primary">#{{ order.order_number }}</span>
+              <span class="order-status-badge status-{{ order.status }} ms-2">{{ order.get_status_display }}</span>
+              <div class="text-muted small mt-1">{{ order.created_at|date:"M d, Y" }} &bull; {{ order.items.count }} item(s)</div>
+            </div>
+            <div class="text-end">
+              <div class="fw-700">₹{{ order.total }}</div>
+              <a href="{% url 'order_detail' order.order_number %}" class="btn sw-btn-outline btn-sm mt-1">View</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="text-center py-4 text-muted">
+          <i class="bi bi-bag display-4"></i>
+          <p class="mt-3">No orders yet.</p>
+          <a href="{% url 'shop' %}" class="btn sw-btn-primary btn-sm">Start Shopping</a>
+        </div>
+        {% endif %}
+      </div>
+
+      {% elif active_tab == 'orders' %}
+      <!-- All Orders -->
+      <div class="checkout-section">
+        <h5 class="fw-700 mb-4">All Orders</h5>
+        {% for order in user.orders.all %}
+        <div class="order-list-card mb-3">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+              <span class="fw-600 text-primary">#{{ order.order_number }}</span>
+              <span class="order-status-badge status-{{ order.status }} ms-2">{{ order.get_status_display }}</span>
+              <div class="text-muted small mt-1">{{ order.created_at|date:"M d, Y" }} &bull; {{ order.items.count }} item(s)</div>
+            </div>
+            <div class="text-end">
+              <div class="fw-700">₹{{ order.total }}</div>
+              <a href="{% url 'order_detail' order.order_number %}" class="btn sw-btn-outline btn-sm mt-1">View</a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="text-center py-4 text-muted"><p>No orders yet.</p></div>
+        {% endfor %}
+      </div>
+
+      {% elif active_tab == 'addresses' %}
+      <!-- Addresses -->
+      <div class="checkout-section">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h5 class="fw-700 mb-0">Saved Addresses</h5>
+          <a href="{% url 'add_address' %}" class="btn sw-btn-primary btn-sm"><i class="bi bi-plus me-1"></i>Add New</a>
+        </div>
+        <div class="row g-3">
+          {% for addr in addresses %}
+          <div class="col-md-6">
+            <div class="saved-address-card">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="addr-type-badge">{{ addr.get_address_type_display }}</span>
+                {% if addr.is_default %}<span class="badge bg-success">Default</span>{% endif %}
+              </div>
+              <div class="fw-600">{{ addr.full_name }}</div>
+              <div class="text-muted small">{{ addr.address_line1 }}, {{ addr.city }}, {{ addr.state }} - {{ addr.pincode }}</div>
+              <div class="text-muted small"><i class="bi bi-telephone me-1"></i>{{ addr.phone }}</div>
+              <div class="d-flex gap-2 mt-3">
+                <a href="{% url 'edit_address' addr.pk %}" class="btn sw-btn-outline btn-sm">Edit</a>
+                <a href="{% url 'delete_address' addr.pk %}" class="btn btn-outline-danger btn-sm"
+                   onclick="return confirm('Delete this address?')">Delete</a>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="col-12 text-center py-4 text-muted">
+            <i class="bi bi-geo-alt display-4"></i>
+            <p class="mt-3">No saved addresses.</p>
+            <a href="{% url 'add_address' %}" class="btn sw-btn-primary btn-sm">Add Address</a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

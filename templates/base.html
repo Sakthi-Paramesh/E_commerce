@@ -1,0 +1,300 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{% block meta_description %}ShopWave — Premium E-Commerce Store. Shop Electronics, Fashion, Beauty, Sports and more.{% endblock %}" />
+  <title>{% block title %}ShopWave — Premium Online Store{% endblock %}</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v=1.1" />
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<!-- ===== TOAST CONTAINER ===== -->
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index:9999;" id="toastContainer">
+  {% if messages %}
+    {% for message in messages %}
+    <div class="toast align-items-center text-bg-{{ message.tags }} border-0 show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
+      <div class="d-flex">
+        <div class="toast-body fw-500">
+          {% if message.tags == 'success' %}<i class="bi bi-check-circle-fill me-2"></i>
+          {% elif message.tags == 'danger' %}<i class="bi bi-x-circle-fill me-2"></i>
+          {% elif message.tags == 'warning' %}<i class="bi bi-exclamation-triangle-fill me-2"></i>
+          {% else %}<i class="bi bi-info-circle-fill me-2"></i>{% endif %}
+          {{ message }}
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top sw-navbar" id="mainNavbar">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand sw-logo" href="{% url 'home' %}">
+      <span class="logo-icon"><i class="bi bi-bag-heart-fill"></i></span>
+      <span class="logo-text">Shop<span class="logo-accent">Wave</span></span>
+    </a>
+
+    <!-- Mobile icons -->
+    <div class="d-flex align-items-center gap-2 d-lg-none">
+      <a href="{% url 'search' %}" class="nav-icon-btn"><i class="bi bi-search"></i></a>
+      <a href="{% url 'cart' %}" class="nav-icon-btn position-relative">
+        <i class="bi bi-cart3"></i>
+        {% if cart_count > 0 %}<span class="cart-badge">{{ cart_count }}</span>{% endif %}
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <!-- Nav links -->
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link sw-nav-link" href="{% url 'home' %}"><i class="bi bi-house me-1"></i>Home</a></li>
+        <li class="nav-item"><a class="nav-link sw-nav-link" href="{% url 'shop' %}"><i class="bi bi-shop me-1"></i>Shop</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link sw-nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-grid me-1"></i>Categories
+          </a>
+          <ul class="dropdown-menu sw-dropdown">
+            <li><a class="dropdown-item" href="{% url 'shop' %}?category=electronics"><i class="bi bi-phone me-2 text-primary"></i>Electronics</a></li>
+            <li><a class="dropdown-item" href="{% url 'shop' %}?category=fashion"><i class="bi bi-bag me-2 text-primary"></i>Fashion</a></li>
+            <li><a class="dropdown-item" href="{% url 'shop' %}?category=beauty"><i class="bi bi-stars me-2 text-primary"></i>Beauty</a></li>
+            <li><a class="dropdown-item" href="{% url 'shop' %}?category=sports"><i class="bi bi-trophy me-2 text-primary"></i>Sports</a></li>
+            <li><a class="dropdown-item" href="{% url 'shop' %}?category=home-kitchen"><i class="bi bi-house-heart me-2 text-primary"></i>Home & Kitchen</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item fw-600 text-primary" href="{% url 'shop' %}"><i class="bi bi-grid-3x3-gap me-2"></i>All Categories</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link sw-nav-link" href="#about-section"><i class="bi bi-info-circle me-1"></i>About</a></li>
+        <li class="nav-item"><a class="nav-link sw-nav-link" href="#footer"><i class="bi bi-envelope me-1"></i>Contact</a></li>
+      </ul>
+
+      <!-- Right-side icons -->
+      <div class="d-flex align-items-center gap-2 ms-auto d-none d-lg-flex">
+        <!-- Search -->
+        <div class="sw-search-wrap">
+          <form action="{% url 'search' %}" method="GET" class="d-flex">
+            <div class="input-group sw-search-group">
+              <input type="text" name="q" class="form-control sw-search-input" placeholder="Search products..." autocomplete="off" />
+              <button class="btn sw-search-btn" type="submit"><i class="bi bi-search"></i></button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Wishlist -->
+        {% if user.is_authenticated %}
+        <a href="{% url 'wishlist' %}" class="nav-icon-btn position-relative" title="Wishlist">
+          <i class="bi bi-heart"></i>
+          {% if wishlist_count > 0 %}<span class="cart-badge bg-danger">{{ wishlist_count }}</span>{% endif %}
+        </a>
+        {% endif %}
+
+        <!-- Cart -->
+        <a href="{% url 'cart' %}" class="nav-icon-btn position-relative" title="Cart">
+          <i class="bi bi-cart3"></i>
+          {% if cart_count > 0 %}<span class="cart-badge" id="navCartBadge">{{ cart_count }}</span>{% endif %}
+        </a>
+
+        <!-- Auth -->
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+          <button class="btn sw-user-btn dropdown-toggle" data-bs-toggle="dropdown">
+            <span class="user-avatar-sm">{{ user.first_name|first|upper }}{{ user.last_name|first|upper }}</span>
+            <span class="d-none d-xl-inline ms-1">{{ user.first_name|default:user.username }}</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end sw-dropdown">
+            <li class="dropdown-header">
+              <strong>{{ user.get_full_name|default:user.username }}</strong><br>
+              <small class="text-muted">{{ user.email }}</small>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'profile' %}"><i class="bi bi-person me-2"></i>My Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'order_list' %}"><i class="bi bi-bag-check me-2"></i>My Orders</a></li>
+            <li><a class="dropdown-item" href="{% url 'wishlist' %}"><i class="bi bi-heart me-2"></i>Wishlist</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+          </ul>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}" class="btn sw-btn-outline btn-sm"><i class="bi bi-person me-1"></i>Login</a>
+        <a href="{% url 'register' %}" class="btn sw-btn-primary btn-sm"><i class="bi bi-person-plus me-1"></i>Register</a>
+        {% endif %}
+      </div>
+
+      <!-- Mobile auth -->
+      <div class="d-lg-none mt-3 pb-2 border-top pt-3">
+        {% if user.is_authenticated %}
+        <div class="d-flex gap-2 flex-wrap">
+          <a href="{% url 'profile' %}" class="btn sw-btn-outline btn-sm"><i class="bi bi-person me-1"></i>Profile</a>
+          <a href="{% url 'wishlist' %}" class="btn sw-btn-outline btn-sm"><i class="bi bi-heart me-1"></i>Wishlist {% if wishlist_count > 0 %}({{ wishlist_count }}){% endif %}</a>
+          <a href="{% url 'logout' %}" class="btn btn-danger btn-sm"><i class="bi bi-box-arrow-right me-1"></i>Logout</a>
+        </div>
+        {% else %}
+        <div class="d-flex gap-2">
+          <a href="{% url 'login' %}" class="btn sw-btn-outline btn-sm flex-fill"><i class="bi bi-person me-1"></i>Login</a>
+          <a href="{% url 'register' %}" class="btn sw-btn-primary btn-sm flex-fill"><i class="bi bi-person-plus me-1"></i>Register</a>
+        </div>
+        {% endif %}
+        <form action="{% url 'search' %}" method="GET" class="mt-2">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search products..." />
+            <button class="btn sw-btn-primary" type="submit"><i class="bi bi-search"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="sw-footer" id="footer">
+  <div class="container">
+    <div class="row g-4 py-5">
+      <!-- Brand -->
+      <div class="col-lg-3 col-md-6">
+        <div class="sw-logo mb-3 fs-4">
+          <span class="logo-icon"><i class="bi bi-bag-heart-fill"></i></span>
+          <span class="logo-text text-white">Shop<span class="logo-accent">Wave</span></span>
+        </div>
+        <p class="text-muted small">Your premium destination for quality products. Shop smarter, live better.</p>
+        <div class="d-flex gap-3 mt-3">
+          <a href="#" class="footer-social"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="footer-social"><i class="bi bi-pinterest"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="footer-heading">Quick Links</h6>
+        <ul class="footer-links">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'shop' %}">Shop</a></li>
+          <li><a href="{% url 'shop' %}?sort=popular">Best Sellers</a></li>
+          <li><a href="{% url 'shop' %}?is_new=true">New Arrivals</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Categories -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="footer-heading">Categories</h6>
+        <ul class="footer-links">
+          <li><a href="{% url 'shop' %}?category=electronics">Electronics</a></li>
+          <li><a href="{% url 'shop' %}?category=fashion">Fashion</a></li>
+          <li><a href="{% url 'shop' %}?category=beauty">Beauty</a></li>
+          <li><a href="{% url 'shop' %}?category=sports">Sports</a></li>
+          <li><a href="{% url 'shop' %}?category=home-kitchen">Home & Kitchen</a></li>
+          <li><a href="{% url 'shop' %}?category=gadgets">Gadgets</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Service -->
+      <div class="col-lg-2 col-md-6 col-6">
+        <h6 class="footer-heading">Customer Service</h6>
+        <ul class="footer-links">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'profile' %}">My Account</a></li>
+          <li><a href="{% url 'order_list' %}">Track Order</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
+          {% endif %}
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Returns & Refunds</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact + Newsletter -->
+      <div class="col-lg-3 col-md-6">
+        <h6 class="footer-heading">Contact Us</h6>
+        <ul class="footer-links mb-3">
+          <li><i class="bi bi-geo-alt me-2 text-primary"></i>123 Market Street, Mumbai, India</li>
+          <li><i class="bi bi-telephone me-2 text-primary"></i>+91 98765 43210</li>
+          <li><i class="bi bi-envelope me-2 text-primary"></i>support@shopwave.com</li>
+          <li><i class="bi bi-clock me-2 text-primary"></i>Mon–Sat: 9AM – 6PM</li>
+        </ul>
+        <h6 class="footer-heading">Newsletter</h6>
+        <form class="d-flex gap-2" onsubmit="subscribeNewsletter(event)">
+          {% csrf_token %}
+          <input type="email" class="form-control form-control-sm sw-footer-input" placeholder="Your email" />
+          <button class="btn sw-btn-primary btn-sm px-3" type="submit"><i class="bi bi-send"></i></button>
+        </form>
+      </div>
+    </div>
+
+    <hr class="border-secondary" />
+    <div class="row align-items-center py-3">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="mb-0 text-muted small">&copy; 2024 ShopWave. All rights reserved. Built with ❤️ in India.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+        <a href="#" class="text-muted small me-3">Privacy Policy</a>
+        <a href="#" class="text-muted small me-3">Terms & Conditions</a>
+        <a href="#" class="text-muted small">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="{% static 'js/main.js' %}"></script>
+
+<script>
+// Auto-dismiss toasts
+document.addEventListener('DOMContentLoaded', function () {
+  const toasts = document.querySelectorAll('.toast.show');
+  toasts.forEach(el => {
+    const toast = new bootstrap.Toast(el, { delay: 4000 });
+    toast.show();
+  });
+});
+
+function subscribeNewsletter(e) {
+  e.preventDefault();
+  showToast('success', '🎉 Thank you for subscribing to ShopWave!');
+  e.target.reset();
+}
+</script>
+
+{% block extra_js %}{% endblock %}
+</body>
+</html>

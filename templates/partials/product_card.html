@@ -1,0 +1,88 @@
+{% load static shop_tags %}
+<div class="col-6 col-md-4 col-lg-3">
+  <div class="product-card" data-product-id="{{ product.pk }}">
+    <!-- Wishlist -->
+    {% if user.is_authenticated %}
+    <button class="wishlist-btn {% if product.pk in wishlist_product_ids %}active{% endif %}"
+            onclick="toggleWishlist({{ product.pk }}, this)"
+            title="Add to Wishlist">
+      <i class="bi bi-heart{% if product.pk in wishlist_product_ids %}-fill{% endif %}"></i>
+    </button>
+    {% endif %}
+
+    <!-- Badges -->
+    <div class="product-badges">
+      {% if product.discount_percentage > 0 %}
+        <span class="badge sw-badge-discount">-{{ product.discount_percentage }}%</span>
+      {% endif %}
+      {% if product.is_new_arrival %}
+        <span class="badge sw-badge-new">New</span>
+      {% endif %}
+      {% if product.stock == 0 %}
+        <span class="badge sw-badge-oos">Out of Stock</span>
+      {% endif %}
+    </div>
+
+    <!-- Image -->
+    <a href="{% url 'product_detail' product.slug %}" class="product-img-link">
+      <div class="product-img-wrap">
+        {% if product.primary_image %}
+          <img src="{{ product.primary_image.image.url }}" alt="{{ product.name }}" class="product-img" loading="lazy" />
+        {% else %}
+          <img src="https://placehold.co/400x400/e2e8f0/64748b?text={{ product.name|urlencode }}" alt="{{ product.name }}" class="product-img" loading="lazy" />
+        {% endif %}
+        <!-- Quick view overlay -->
+        <div class="product-overlay">
+          <a href="{% url 'product_detail' product.slug %}" class="overlay-btn" title="Quick View">
+            <i class="bi bi-eye"></i>
+          </a>
+        </div>
+      </div>
+    </a>
+
+    <!-- Info -->
+    <div class="product-info">
+      <div class="product-category">{{ product.category.name }}</div>
+      <a href="{% url 'product_detail' product.slug %}" class="product-name-link">
+        <h6 class="product-name">{{ product.name|truncatechars:45 }}</h6>
+      </a>
+
+      <!-- Rating stars using safe custom filter -->
+      <div class="d-flex align-items-center gap-2 mb-2">
+        <div class="product-stars">
+          {% with product.rating|to_int as r %}
+            {% for i in "12345" %}
+              {% if forloop.counter <= r %}
+                <i class="bi bi-star-fill"></i>
+              {% else %}
+                <i class="bi bi-star"></i>
+              {% endif %}
+            {% endfor %}
+          {% endwith %}
+        </div>
+        <span class="rating-count">({{ product.review_count }})</span>
+      </div>
+
+      <!-- Price -->
+      <div class="product-price-wrap">
+        {% if product.discount_price %}
+          <span class="product-price">₹{{ product.discount_price }}</span>
+          <span class="product-original-price">₹{{ product.price }}</span>
+        {% else %}
+          <span class="product-price">₹{{ product.price }}</span>
+        {% endif %}
+      </div>
+
+      <!-- Add to Cart -->
+      <button class="btn sw-btn-add-cart w-100 mt-2 {% if not product.is_in_stock %}disabled{% endif %}"
+              onclick="addToCart({{ product.pk }}, 1, this)"
+              {% if not product.is_in_stock %}disabled{% endif %}>
+        {% if product.is_in_stock %}
+          <i class="bi bi-cart-plus me-1"></i>Add to Cart
+        {% else %}
+          <i class="bi bi-x-circle me-1"></i>Out of Stock
+        {% endif %}
+      </button>
+    </div>
+  </div>
+</div>

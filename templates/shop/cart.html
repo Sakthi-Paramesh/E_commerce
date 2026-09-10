@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+{% block title %}My Cart — ShopWave{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb sw-breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item active">Shopping Cart</li>
+    </ol>
+  </nav>
+
+  <h2 class="fw-700 mb-4">
+    <i class="bi bi-cart3 me-2 text-primary"></i>My Cart
+    <span class="text-muted fw-400 fs-5">({{ cart.total_items }} items)</span>
+  </h2>
+
+  {% if items %}
+  <div class="row g-4">
+
+    <!-- ── Cart Items ── -->
+    <div class="col-lg-8">
+      <div class="cart-items-wrap">
+        {% for item in items %}
+        <div class="cart-item" id="cartItem{{ item.pk }}">
+          <div class="d-flex gap-3 align-items-start">
+
+            <!-- Image -->
+            <a href="{% url 'product_detail' item.product.slug %}">
+              <div class="cart-item-img-wrap">
+                {% if item.product.primary_image %}
+                  <img src="{{ item.product.primary_image.image.url }}"
+                       alt="{{ item.product.name }}" class="cart-item-img" />
+                {% else %}
+                  <img src="https://placehold.co/100x100/f1f5f9/64748b?text=No+Image"
+                       alt="{{ item.product.name }}" class="cart-item-img" />
+                {% endif %}
+              </div>
+            </a>
+
+            <!-- Info -->
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <a href="{% url 'product_detail' item.product.slug %}" class="cart-item-name">
+                    {{ item.product.name }}
+                  </a>
+                  <div class="text-muted small mt-1">{{ item.product.category.name }}</div>
+                  {% if item.product.discount_price %}
+                  <div class="mt-1">
+                    <span class="fw-700 text-primary">₹{{ item.product.discount_price }}</span>
+                    <span class="text-muted text-decoration-line-through ms-2 small">₹{{ item.product.price }}</span>
+                  </div>
+                  {% else %}
+                  <div class="mt-1">
+                    <span class="fw-700 text-primary">₹{{ item.product.price }}</span>
+                  </div>
+                  {% endif %}
+                </div>
+
+                <!-- Remove button — uses data-id, no inline Django tags -->
+                <button class="btn btn-sm btn-outline-danger btn-remove-item"
+                        data-id="{{ item.pk }}" title="Remove item">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </div>
+
+              <!-- Quantity + Total -->
+              <div class="d-flex align-items-center justify-content-between mt-3 flex-wrap gap-2">
+                <div class="quantity-selector quantity-sm">
+                  <!-- Minus button — uses data-id and data-action, no inline Django tags -->
+                  <button class="qty-btn btn-qty-change"
+                          data-id="{{ item.pk }}" data-action="minus">−</button>
+                  <input type="number"
+                         value="{{ item.quantity }}"
+                         class="qty-input"
+                         id="qty{{ item.pk }}"
+                         min="1"
+                         max="{{ item.product.stock }}"
+                         readonly />
+                  <!-- Plus button -->
+                  <button class="qty-btn btn-qty-change"
+                          data-id="{{ item.pk }}" data-action="plus">+</button>
+                </div>
+                <div class="cart-item-total fw-700" id="itemTotal{{ item.pk }}">
+                  ₹{{ item.total_price }}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="d-flex gap-2 mt-4">
+        <a href="{% url 'shop' %}" class="btn sw-btn-outline">
+          <i class="bi bi-arrow-left me-1"></i>Continue Shopping
+        </a>
+        <a href="{% url 'checkout' %}" class="btn sw-btn-primary">
+          <i class="bi bi-credit-card me-1"></i>Buy Now
+        </a>
+        <button class="btn btn-outline-danger ms-auto" id="btnClearCart">
+          <i class="bi bi-trash3 me-1"></i>Clear Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Order Summary ── -->
+    <div class="col-lg-4">
+      <div class="order-summary-card sticky-top" style="top:80px;">
+        <h5 class="fw-700 mb-4">Order Summary</h5>
+
+        <div class="summary-row">
+          <span>Subtotal ({{ cart.total_items }} items)</span>
+          <span id="summarySubtotal">₹{{ cart.subtotal }}</span>
+        </div>
+
+        {% if cart.discount_total > 0 %}
+        <div class="summary-row text-success">
+          <span>Discount Savings</span>
+          <span id="summaryDiscount">−₹{{ cart.discount_total }}</span>
+        </div>
+        {% endif %}
+
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="summaryShipping">
+            {% if cart.shipping == 0 %}
+              <span class="text-success fw-600">FREE</span>
+            {% else %}
+              ₹{{ cart.shipping }}
+            {% endif %}
+          </span>
+        </div>
+
+        <div class="summary-row">
+          <span>Tax (18% GST)</span>
+          <span id="summaryTax">₹{{ cart.tax }}</span>
+        </div>
+
+        <hr />
+
+        <div class="summary-row summary-total">
+          <span>Grand Total</span>
+          <span id="summaryTotal">₹{{ cart.grand_total }}</span>
+        </div>
+
+        {% if cart.shipping > 0 %}
+        <div class="free-shipping-hint mt-2">
+          <i class="bi bi-truck me-1 text-primary"></i>
+          Add more products for <strong>FREE shipping on orders over ₹999</strong>!
+        </div>
+        {% else %}
+        <div class="free-shipping-hint text-success mt-2">
+          <i class="bi bi-check-circle me-1"></i>You've qualified for <strong>FREE shipping</strong>!
+        </div>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+        <a href="{% url 'checkout' %}" class="btn sw-btn-primary w-100 mt-4 btn-lg">
+          <i class="bi bi-lock-fill me-2"></i>Secure Checkout
+        </a>
+        {% else %}
+        <a href="{% url 'login' %}?next={% url 'checkout' %}" class="btn sw-btn-primary w-100 mt-4 btn-lg">
+          <i class="bi bi-person me-2"></i>Login to Checkout
+        </a>
+        {% endif %}
+
+        <div class="d-flex gap-2 justify-content-center mt-3 text-muted small">
+          <span><i class="bi bi-lock me-1"></i>Secure</span>
+          <span>|</span>
+          <span><i class="bi bi-shield-check me-1"></i>Protected</span>
+          <span>|</span>
+          <span><i class="bi bi-credit-card me-1"></i>Multiple Payment</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {% else %}
+  <div class="empty-state text-center py-5">
+    <i class="bi bi-cart-x display-1 text-muted"></i>
+    <h4 class="mt-4">Your Cart is Empty</h4>
+    <p class="text-muted">Looks like you haven't added any products yet!</p>
+    <a href="{% url 'shop' %}" class="btn sw-btn-primary mt-3 px-5">
+      <i class="bi bi-shop me-2"></i>Start Shopping
+    </a>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  const UPDATE_URL  = "{% url 'update_cart' %}";
+  const REMOVE_URL  = "{% url 'remove_from_cart' %}";
+  const CART_URL    = "{% url 'cart' %}";
+
+  /* ── quantity +/- buttons ── */
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.btn-qty-change');
+    if (!btn) return;
+    const itemId = btn.dataset.id;
+    const input  = document.getElementById('qty' + itemId);
+    let qty = parseInt(input.value, 10);
+    qty = btn.dataset.action === 'plus' ? qty + 1 : qty - 1;
+    qty = Math.max(1, qty);
+    updateCartItem(itemId, qty);
+  });
+
+  /* ── remove item buttons ── */
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.btn-remove-item');
+    if (!btn) return;
+    if (!confirm('Remove this item from cart?')) return;
+    removeFromCart(btn.dataset.id);
+  });
+
+  /* ── clear cart button ── */
+  document.getElementById('btnClearCart') &&
+    document.getElementById('btnClearCart').addEventListener('click', function () {
+      if (!confirm('Clear all items from cart?')) return;
+      window.location.href = CART_URL + '?clear=1';
+    });
+
+  /* ── API calls ── */
+  function updateCartItem(itemId, qty) {
+    fetch(UPDATE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken') },
+      body: JSON.stringify({ item_id: itemId, quantity: qty })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById('qty' + itemId).value = qty;
+        document.getElementById('itemTotal' + itemId).textContent = '₹' + data.item_total;
+        updateSummary(data);
+      } else {
+        showToast('error', data.message || 'Could not update quantity.');
+      }
+    })
+    .catch(() => showToast('error', 'Something went wrong.'));
+  }
+
+  function removeFromCart(itemId) {
+    fetch(REMOVE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken') },
+      body: JSON.stringify({ item_id: itemId })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        const el = document.getElementById('cartItem' + itemId);
+        if (el) {
+          el.style.transition = 'opacity 0.3s, transform 0.3s';
+          el.style.opacity = '0';
+          el.style.transform = 'translateX(-20px)';
+          setTimeout(() => { el.remove(); location.reload(); }, 320);
+        }
+      }
+    })
+    .catch(() => showToast('error', 'Something went wrong.'));
+  }
+
+  function updateSummary(data) {
+    const shipping = parseFloat(data.shipping);
+    document.getElementById('summarySubtotal').textContent  = '₹' + data.subtotal;
+    document.getElementById('summaryShipping').textContent  = shipping === 0 ? 'FREE' : '₹' + data.shipping;
+    document.getElementById('summaryTax').textContent       = '₹' + data.tax;
+    document.getElementById('summaryTotal').textContent     = '₹' + data.grand_total;
+    updateNavCartCount(data.cart_count);
+  }
+</script>
+{% endblock %}
