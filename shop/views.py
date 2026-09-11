@@ -323,6 +323,31 @@ def remove_from_cart(request):
 
 
 # ─────────────────────────────────────────────
+#  BUY NOW — cart-க்கு add செய்து checkout-க்கு redirect
+# ─────────────────────────────────────────────
+@require_POST
+def buy_now(request):
+    data = json.loads(request.body) if request.content_type == 'application/json' else request.POST
+    product_id = data.get('product_id')
+    quantity = int(data.get('quantity', 1))
+
+    product = get_object_or_404(Product, pk=product_id, is_active=True)
+    if not product.is_in_stock:
+        return JsonResponse({'success': False, 'message': 'Product is out of stock.'})
+
+    cart = get_or_create_cart(request)
+    item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if not created:
+        item.quantity += quantity
+    else:
+        item.quantity = quantity
+    item.quantity = min(item.quantity, product.stock)
+    item.save()
+
+    return JsonResponse({'success': True, 'redirect': '/checkout/'})
+
+
+# ─────────────────────────────────────────────
 #  WISHLIST
 # ─────────────────────────────────────────────
 @login_required

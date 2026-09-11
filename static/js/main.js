@@ -105,6 +105,43 @@ function addToCart(productId, quantity = 1, btn = null) {
     });
 }
 
+// ─── BUY NOW ─────────────────────────────────────────────────
+function buyNow(productId, btn = null) {
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Processing...';
+  }
+
+  fetch('/cart/buy-now/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getCookie('csrftoken'),
+    },
+    body: JSON.stringify({ product_id: productId, quantity: 1 }),
+  })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        window.location.href = data.redirect;
+      } else {
+        showToast('error', data.message || 'Could not process. Please try again.');
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="bi bi-lightning-fill me-1"></i>Buy Now';
+        }
+      }
+    })
+    .catch(() => {
+      showToast('error', 'Something went wrong. Please try again.');
+      if (btn) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="bi bi-lightning-fill me-1"></i>Buy Now';
+      }
+    });
+}
+
+
 // ─── TOGGLE WISHLIST ─────────────────────────────────────────
 function toggleWishlist(productId, btn) {
   const icon = btn.querySelector('i');
