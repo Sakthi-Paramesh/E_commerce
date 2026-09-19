@@ -1,995 +1,995 @@
 [
-{
-  "model": "shop.category",
-  "pk": 1,
-  "fields": {
-    "name": "Electronics",
-    "slug": "electronics",
-    "image": "",
-    "icon": "bi bi-phone",
-    "description": "Latest gadgets and electronics",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:19.324Z"
+  {
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+      "name": "Electronics",
+      "slug": "electronics",
+      "image": "",
+      "icon": "bi bi-phone",
+      "description": "Latest gadgets and electronics",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:19.324Z"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+      "name": "Fashion",
+      "slug": "fashion",
+      "image": "",
+      "icon": "bi bi-bag",
+      "description": "Trendy clothing and accessories",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:58.759Z"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 3,
+    "fields": {
+      "name": "Men's Fashion",
+      "slug": "mens-fashion",
+      "image": "",
+      "icon": "bi bi-person",
+      "description": "Clothing for men",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:58.765Z"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 4,
+    "fields": {
+      "name": "Women's Fashion",
+      "slug": "womens-fashion",
+      "image": "",
+      "icon": "fa-solid fa-person-dress",
+      "description": "Clothing for women",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:58.770Z"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 5,
+    "fields": {
+      "name": "Shoes",
+      "slug": "shoes",
+      "image": "",
+      "icon": "fa-solid fa-shoe-prints",
+      "description": "Footwear for all occasions",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:58.775Z"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 6,
+    "fields": {
+      "name": "Beauty",
+      "slug": "beauty",
+      "image": "",
+      "icon": "bi bi-stars",
+      "description": "Skincare, makeup and beauty products",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:58.780Z"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 7,
+    "fields": {
+      "name": "Home & Kitchen",
+      "slug": "home-kitchen",
+      "image": "",
+      "icon": "bi bi-house-heart",
+      "description": "Home appliances and decor",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:58.785Z"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 8,
+    "fields": {
+      "name": "Sports",
+      "slug": "sports",
+      "image": "",
+      "icon": "bi bi-trophy",
+      "description": "Sports and fitness equipment",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:58.790Z"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 9,
+    "fields": {
+      "name": "Gadgets",
+      "slug": "gadgets",
+      "image": "",
+      "icon": "bi bi-cpu",
+      "description": "Smart gadgets and accessories",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:58.794Z"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 10,
+    "fields": {
+      "name": "Accessories",
+      "slug": "accessories",
+      "image": "",
+      "icon": "bi bi-watch",
+      "description": "Watches, bags and accessories",
+      "is_active": true,
+      "created_at": "2026-09-10T05:54:58.798Z"
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 1,
+    "fields": {
+      "name": "Apple",
+      "slug": "apple",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 2,
+    "fields": {
+      "name": "Samsung",
+      "slug": "samsung",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 3,
+    "fields": {
+      "name": "Sony",
+      "slug": "sony",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 4,
+    "fields": {
+      "name": "Nike",
+      "slug": "nike",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 5,
+    "fields": {
+      "name": "Adidas",
+      "slug": "adidas",
+      "logo": "brands/OIP_1.jpg",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 6,
+    "fields": {
+      "name": "Puma",
+      "slug": "puma",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 7,
+    "fields": {
+      "name": "H&M",
+      "slug": "hm",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 8,
+    "fields": {
+      "name": "Zara",
+      "slug": "zara",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 9,
+    "fields": {
+      "name": "L'Oreal",
+      "slug": "loreal",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 10,
+    "fields": {
+      "name": "Lakme",
+      "slug": "lakme",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 11,
+    "fields": {
+      "name": "Philips",
+      "slug": "philips",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 12,
+    "fields": {
+      "name": "Boat",
+      "slug": "boat",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 13,
+    "fields": {
+      "name": "OnePlus",
+      "slug": "oneplus",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 14,
+    "fields": {
+      "name": "Realme",
+      "slug": "realme",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 15,
+    "fields": {
+      "name": "Xiaomi",
+      "slug": "xiaomi",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 16,
+    "fields": {
+      "name": "Titan",
+      "slug": "titan",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.brand",
+    "pk": 17,
+    "fields": {
+      "name": "Fastrack",
+      "slug": "fastrack",
+      "logo": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 1,
+    "fields": {
+      "name": "iPhone 15 Pro Max",
+      "slug": "iphone-15-pro-max",
+      "category": 1,
+      "brand": 1,
+      "description": "The most powerful iPhone ever. Features the A17 Pro chip, titanium design, and a 48MP main camera system.",
+      "specifications": "Chip: A17 Pro\nStorage: 256GB\nDisplay: 6.7\" Super Retina XDR\nCamera: 48MP Main\nBattery: 4422mAh",
+      "price": "134900.00",
+      "discount_price": "119900.00",
+      "stock": 25,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": true,
+      "rating": "4.8",
+      "review_count": 52,
+      "sold_count": 385,
+      "created_at": "2026-09-10T05:56:05.864Z",
+      "updated_at": "2026-09-10T05:56:05.864Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 2,
+    "fields": {
+      "name": "Samsung Galaxy S24 Ultra",
+      "slug": "samsung-galaxy-s24-ultra",
+      "category": 1,
+      "brand": 2,
+      "description": "Next level Galaxy AI with Galaxy S24 Ultra. Features a 200MP camera, S Pen, and titanium frame.",
+      "specifications": "Chip: Snapdragon 8 Gen 3\nStorage: 256GB\nDisplay: 6.8\" AMOLED\nCamera: 200MP",
+      "price": "124999.00",
+      "discount_price": "109999.00",
+      "stock": 30,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": true,
+      "rating": "4.7",
+      "review_count": 92,
+      "sold_count": 96,
+      "created_at": "2026-09-10T05:56:05.869Z",
+      "updated_at": "2026-09-10T05:56:05.869Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 3,
+    "fields": {
+      "name": "Sony WH-1000XM5 Headphones",
+      "slug": "sony-wh-1000xm5-headphones",
+      "category": 1,
+      "brand": 3,
+      "description": "Industry-leading noise canceling with exceptional sound quality. 30-hour battery life.",
+      "specifications": "Type: Over-ear\nBattery: 30 hours\nDriver: 30mm\nBluetooth: 5.2",
+      "price": "29990.00",
+      "discount_price": "24990.00",
+      "stock": 50,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": false,
+      "rating": "4.9",
+      "review_count": 194,
+      "sold_count": 120,
+      "created_at": "2026-09-10T05:56:05.874Z",
+      "updated_at": "2026-09-10T05:56:05.874Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 4,
+    "fields": {
+      "name": "Apple MacBook Air M3",
+      "slug": "apple-macbook-air-m3",
+      "category": 1,
+      "brand": 1,
+      "description": "Supercharged by the M3 chip. Blazing-fast performance in an ultra-thin design.",
+      "specifications": "Chip: Apple M3\nRAM: 8GB\nStorage: 256GB SSD\nDisplay: 13.6\" Liquid Retina",
+      "price": "114900.00",
+      "discount_price": "104900.00",
+      "stock": 15,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": false,
+      "rating": "4.9",
+      "review_count": 106,
+      "sold_count": 77,
+      "created_at": "2026-09-10T05:56:05.879Z",
+      "updated_at": "2026-09-10T05:56:05.879Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 5,
+    "fields": {
+      "name": "boAt Rockerz 450 Pro",
+      "slug": "boat-rockerz-450-pro",
+      "category": 1,
+      "brand": 12,
+      "description": "Wireless Bluetooth headphones with 70 hours playback, deep bass and foldable design.",
+      "specifications": "Battery: 70 hours\nDriver: 40mm\nBluetooth: 5.0",
+      "price": "2499.00",
+      "discount_price": "1299.00",
+      "stock": 200,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": true,
+      "rating": "4.2",
+      "review_count": 10,
+      "sold_count": 180,
+      "created_at": "2026-09-10T05:56:05.884Z",
+      "updated_at": "2026-09-10T05:56:05.884Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 6,
+    "fields": {
+      "name": "OnePlus 12 5G",
+      "slug": "oneplus-12-5g",
+      "category": 1,
+      "brand": 13,
+      "description": "Flagship performance with Snapdragon 8 Gen 3, 50W wireless charging, and Hasselblad cameras.",
+      "specifications": "Chip: Snapdragon 8 Gen 3\nStorage: 256GB\nDisplay: 6.82\" AMOLED\nCharging: 100W",
+      "price": "64999.00",
+      "discount_price": "57999.00",
+      "stock": 40,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": false,
+      "rating": "4.6",
+      "review_count": 166,
+      "sold_count": 248,
+      "created_at": "2026-09-10T05:56:05.890Z",
+      "updated_at": "2026-09-10T05:56:05.890Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 7,
+    "fields": {
+      "name": "Nike Air Max 270",
+      "slug": "nike-air-max-270",
+      "category": 5,
+      "brand": 4,
+      "description": "The Nike Air Max 270 delivers a big, bold look with an ultra-comfortable Air unit.",
+      "specifications": "",
+      "price": "11995.00",
+      "discount_price": "8995.00",
+      "stock": 75,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": true,
+      "rating": "4.5",
+      "review_count": 164,
+      "sold_count": 302,
+      "created_at": "2026-09-10T05:56:05.897Z",
+      "updated_at": "2026-09-10T05:56:05.897Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 8,
+    "fields": {
+      "name": "Adidas Ultraboost 23",
+      "slug": "adidas-ultraboost-23",
+      "category": 5,
+      "brand": 5,
+      "description": "Experience incredible energy return and comfort with Boost technology.",
+      "specifications": "",
+      "price": "17999.00",
+      "discount_price": "13999.00",
+      "stock": 60,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": false,
+      "rating": "4.7",
+      "review_count": 103,
+      "sold_count": 207,
+      "created_at": "2026-09-10T05:56:05.903Z",
+      "updated_at": "2026-09-10T05:56:05.903Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 9,
+    "fields": {
+      "name": "Puma Men's Polo T-Shirt",
+      "slug": "puma-mens-polo-t-shirt",
+      "category": 3,
+      "brand": 6,
+      "description": "Classic polo t-shirt with moisture-wicking fabric for all-day comfort.",
+      "specifications": "",
+      "price": "2499.00",
+      "discount_price": "1499.00",
+      "stock": 150,
+      "is_active": true,
+      "is_featured": false,
+      "is_new_arrival": true,
+      "rating": "4.3",
+      "review_count": 16,
+      "sold_count": 154,
+      "created_at": "2026-09-10T05:56:05.909Z",
+      "updated_at": "2026-09-10T05:56:05.909Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 10,
+    "fields": {
+      "name": "Zara Women's Floral Dress",
+      "slug": "zara-womens-floral-dress",
+      "category": 4,
+      "brand": 8,
+      "description": "Elegant floral print dress perfect for casual and semi-formal occasions.",
+      "specifications": "",
+      "price": "3999.00",
+      "discount_price": "2499.00",
+      "stock": 79,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": true,
+      "rating": "4.4",
+      "review_count": 196,
+      "sold_count": 97,
+      "created_at": "2026-09-10T05:56:05.915Z",
+      "updated_at": "2026-09-10T05:56:05.915Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 11,
+    "fields": {
+      "name": "H&M Slim Fit Jeans",
+      "slug": "hm-slim-fit-jeans",
+      "category": 3,
+      "brand": 7,
+      "description": "Modern slim fit jeans with stretch fabric for maximum comfort.",
+      "specifications": "",
+      "price": "2999.00",
+      "discount_price": "1799.00",
+      "stock": 120,
+      "is_active": true,
+      "is_featured": false,
+      "is_new_arrival": true,
+      "rating": "4.1",
+      "review_count": 163,
+      "sold_count": 131,
+      "created_at": "2026-09-10T05:56:05.921Z",
+      "updated_at": "2026-09-10T05:56:05.921Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 12,
+    "fields": {
+      "name": "Titan Raga Women's Watch",
+      "slug": "titan-raga-womens-watch",
+      "category": 10,
+      "brand": 16,
+      "description": "Elegant women's watch with rose gold plating and leather strap.",
+      "specifications": "",
+      "price": "8995.00",
+      "discount_price": "6995.00",
+      "stock": 45,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": false,
+      "rating": "4.6",
+      "review_count": 9,
+      "sold_count": 27,
+      "created_at": "2026-09-10T05:56:05.926Z",
+      "updated_at": "2026-09-10T05:56:05.926Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 13,
+    "fields": {
+      "name": "Fastrack Casual Watch",
+      "slug": "fastrack-casual-watch",
+      "category": 10,
+      "brand": 17,
+      "description": "Stylish casual watch with silicon strap and water-resistant design.",
+      "specifications": "",
+      "price": "2995.00",
+      "discount_price": "1995.00",
+      "stock": 90,
+      "is_active": true,
+      "is_featured": false,
+      "is_new_arrival": true,
+      "rating": "4.2",
+      "review_count": 49,
+      "sold_count": 447,
+      "created_at": "2026-09-10T05:56:05.932Z",
+      "updated_at": "2026-09-10T05:56:05.932Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 14,
+    "fields": {
+      "name": "LOreal Revitalift Face Cream",
+      "slug": "loreal-revitalift-face-cream",
+      "category": 6,
+      "brand": 9,
+      "description": "Anti-aging face cream with Pro-Retinol and Centella. Visibly reduces wrinkles.",
+      "specifications": "",
+      "price": "899.00",
+      "discount_price": "649.00",
+      "stock": 200,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": false,
+      "rating": "4.4",
+      "review_count": 189,
+      "sold_count": 119,
+      "created_at": "2026-09-10T05:56:05.938Z",
+      "updated_at": "2026-09-10T05:56:05.938Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 15,
+    "fields": {
+      "name": "Lakme Absolute Lipstick",
+      "slug": "lakme-absolute-lipstick",
+      "category": 6,
+      "brand": 10,
+      "description": "Long-lasting matte lipstick in 30+ shades. Up to 12 hours wear.",
+      "specifications": "",
+      "price": "699.00",
+      "discount_price": "499.00",
+      "stock": 300,
+      "is_active": true,
+      "is_featured": false,
+      "is_new_arrival": true,
+      "rating": "4.3",
+      "review_count": 94,
+      "sold_count": 57,
+      "created_at": "2026-09-10T05:56:05.944Z",
+      "updated_at": "2026-09-10T05:56:05.944Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 16,
+    "fields": {
+      "name": "Adidas Yoga Mat Pro",
+      "slug": "adidas-yoga-mat-pro",
+      "category": 8,
+      "brand": 5,
+      "description": "Premium non-slip yoga mat with alignment lines and carrying strap.",
+      "specifications": "",
+      "price": "3999.00",
+      "discount_price": "2499.00",
+      "stock": 100,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": false,
+      "rating": "4.5",
+      "review_count": 143,
+      "sold_count": 300,
+      "created_at": "2026-09-10T05:56:05.950Z",
+      "updated_at": "2026-09-10T06:42:23.082Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 17,
+    "fields": {
+      "name": "Nike Dri-FIT Training Shorts",
+      "slug": "nike-dri-fit-training-shorts",
+      "category": 8,
+      "brand": 4,
+      "description": "Lightweight training shorts with sweat-wicking Dri-FIT technology.",
+      "specifications": "",
+      "price": "2499.00",
+      "discount_price": "1799.00",
+      "stock": 130,
+      "is_active": true,
+      "is_featured": false,
+      "is_new_arrival": true,
+      "rating": "4.4",
+      "review_count": 53,
+      "sold_count": 418,
+      "created_at": "2026-09-10T05:56:05.957Z",
+      "updated_at": "2026-09-10T05:56:05.957Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 18,
+    "fields": {
+      "name": "Philips Air Fryer HD9252",
+      "slug": "philips-air-fryer-hd9252",
+      "category": 7,
+      "brand": 11,
+      "description": "Rapid Air Technology air fryer. Fry, bake, grill with little to no oil.",
+      "specifications": "",
+      "price": "9999.00",
+      "discount_price": "6999.00",
+      "stock": 35,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": false,
+      "rating": "4.6",
+      "review_count": 93,
+      "sold_count": 406,
+      "created_at": "2026-09-10T05:56:05.963Z",
+      "updated_at": "2026-09-10T05:56:05.963Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 19,
+    "fields": {
+      "name": "Prestige Induction Cooktop",
+      "slug": "prestige-induction-cooktop",
+      "category": 7,
+      "brand": 11,
+      "description": "Energy-efficient 2000W induction cooktop with 8 power levels.",
+      "specifications": "",
+      "price": "3499.00",
+      "discount_price": "2299.00",
+      "stock": 55,
+      "is_active": true,
+      "is_featured": false,
+      "is_new_arrival": true,
+      "rating": "4.3",
+      "review_count": 52,
+      "sold_count": 408,
+      "created_at": "2026-09-10T05:56:05.970Z",
+      "updated_at": "2026-09-10T05:56:05.970Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 20,
+    "fields": {
+      "name": "Sony PlayStation 5",
+      "slug": "sony-playstation-5",
+      "category": 9,
+      "brand": 3,
+      "description": "Next-gen gaming with lightning-fast SSD, 3D audio, and DualSense controller.",
+      "specifications": "CPU: AMD Zen 2\nGPU: 10.28 TFLOPS\nStorage: 825GB SSD",
+      "price": "54990.00",
+      "discount_price": "49990.00",
+      "stock": 10,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": false,
+      "rating": "4.9",
+      "review_count": 194,
+      "sold_count": 144,
+      "created_at": "2026-09-10T05:56:05.976Z",
+      "updated_at": "2026-09-10T05:56:05.976Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 21,
+    "fields": {
+      "name": "Apple iPad Air (2024)",
+      "slug": "apple-ipad-air-2024",
+      "category": 9,
+      "brand": 1,
+      "description": "Powerful. Colorful. Wonderful. M2 chip for superfast performance.",
+      "specifications": "",
+      "price": "59900.00",
+      "discount_price": "54900.00",
+      "stock": 19,
+      "is_active": true,
+      "is_featured": true,
+      "is_new_arrival": true,
+      "rating": "4.8",
+      "review_count": 9,
+      "sold_count": 165,
+      "created_at": "2026-09-10T05:56:05.983Z",
+      "updated_at": "2026-09-10T06:36:20.964Z"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 1,
+    "fields": {
+      "product": 21,
+      "image": "products/OIP_1",
+      "is_primary": false,
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 2,
+    "fields": {
+      "product": 16,
+      "image": "products/OIP_1",
+      "is_primary": false,
+      "alt_text": ""
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 3,
+    "fields": {
+      "product": 20,
+      "image": "products/sony-playstation-5",
+      "is_primary": true,
+      "alt_text": "Sony PlayStation 5"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 4,
+    "fields": {
+      "product": 19,
+      "image": "products/prestige-induction-cooktop",
+      "is_primary": true,
+      "alt_text": "Prestige Induction Cooktop"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 5,
+    "fields": {
+      "product": 18,
+      "image": "products/philips-air-fryer-hd9252",
+      "is_primary": true,
+      "alt_text": "Philips Air Fryer HD9252"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 6,
+    "fields": {
+      "product": 15,
+      "image": "products/lakme-absolute-lipstick",
+      "is_primary": true,
+      "alt_text": "Lakme Absolute Lipstick"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 7,
+    "fields": {
+      "product": 14,
+      "image": "products/loreal-revitalift-face-cream",
+      "is_primary": true,
+      "alt_text": "LOreal Revitalift Face Cream"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 8,
+    "fields": {
+      "product": 13,
+      "image": "products/fastrack-casual-watch",
+      "is_primary": true,
+      "alt_text": "Fastrack Casual Watch"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 9,
+    "fields": {
+      "product": 12,
+      "image": "products/titan-raga-womens-watch",
+      "is_primary": true,
+      "alt_text": "Titan Raga Women's Watch"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 10,
+    "fields": {
+      "product": 11,
+      "image": "products/hm-slim-fit-jeans",
+      "is_primary": true,
+      "alt_text": "H&M Slim Fit Jeans"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 11,
+    "fields": {
+      "product": 10,
+      "image": "products/zara-womens-floral-dress",
+      "is_primary": true,
+      "alt_text": "Zara Women's Floral Dress"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 12,
+    "fields": {
+      "product": 9,
+      "image": "products/puma-mens-polo-t-shirt",
+      "is_primary": true,
+      "alt_text": "Puma Men's Polo T-Shirt"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 13,
+    "fields": {
+      "product": 8,
+      "image": "products/adidas-ultraboost-23",
+      "is_primary": true,
+      "alt_text": "Adidas Ultraboost 23"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 14,
+    "fields": {
+      "product": 7,
+      "image": "products/nike-air-max-270",
+      "is_primary": true,
+      "alt_text": "Nike Air Max 270"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 15,
+    "fields": {
+      "product": 6,
+      "image": "products/oneplus-12-5g",
+      "is_primary": true,
+      "alt_text": "OnePlus 12 5G"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 16,
+    "fields": {
+      "product": 5,
+      "image": "products/boat-rockerz-450-pro",
+      "is_primary": true,
+      "alt_text": "boAt Rockerz 450 Pro"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 17,
+    "fields": {
+      "product": 4,
+      "image": "products/apple-macbook-air-m3",
+      "is_primary": true,
+      "alt_text": "Apple MacBook Air M3"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 18,
+    "fields": {
+      "product": 3,
+      "image": "products/sony-wh-1000xm5-headphones",
+      "is_primary": true,
+      "alt_text": "Sony WH-1000XM5 Headphones"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 19,
+    "fields": {
+      "product": 2,
+      "image": "products/samsung-galaxy-s24-ultra",
+      "is_primary": true,
+      "alt_text": "Samsung Galaxy S24 Ultra"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 20,
+    "fields": {
+      "product": 1,
+      "image": "products/iphone-15-pro-max",
+      "is_primary": true,
+      "alt_text": "iPhone 15 Pro Max"
+    }
+  },
+  {
+    "model": "shop.productimage",
+    "pk": 21,
+    "fields": {
+      "product": 17,
+      "image": "products/nike-shorts",
+      "is_primary": true,
+      "alt_text": ""
+    }
   }
-},
-{
-  "model": "shop.category",
-  "pk": 2,
-  "fields": {
-    "name": "Fashion",
-    "slug": "fashion",
-    "image": "",
-    "icon": "bi bi-bag",
-    "description": "Trendy clothing and accessories",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:58.759Z"
-  }
-},
-{
-  "model": "shop.category",
-  "pk": 3,
-  "fields": {
-    "name": "Men's Fashion",
-    "slug": "mens-fashion",
-    "image": "",
-    "icon": "bi bi-person",
-    "description": "Clothing for men",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:58.765Z"
-  }
-},
-{
-  "model": "shop.category",
-  "pk": 4,
-  "fields": {
-    "name": "Women's Fashion",
-    "slug": "womens-fashion",
-    "image": "",
-    "icon": "fa-solid fa-person-dress",
-    "description": "Clothing for women",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:58.770Z"
-  }
-},
-{
-  "model": "shop.category",
-  "pk": 5,
-  "fields": {
-    "name": "Shoes",
-    "slug": "shoes",
-    "image": "",
-    "icon": "fa-solid fa-shoe-prints",
-    "description": "Footwear for all occasions",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:58.775Z"
-  }
-},
-{
-  "model": "shop.category",
-  "pk": 6,
-  "fields": {
-    "name": "Beauty",
-    "slug": "beauty",
-    "image": "",
-    "icon": "bi bi-stars",
-    "description": "Skincare, makeup and beauty products",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:58.780Z"
-  }
-},
-{
-  "model": "shop.category",
-  "pk": 7,
-  "fields": {
-    "name": "Home & Kitchen",
-    "slug": "home-kitchen",
-    "image": "",
-    "icon": "bi bi-house-heart",
-    "description": "Home appliances and decor",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:58.785Z"
-  }
-},
-{
-  "model": "shop.category",
-  "pk": 8,
-  "fields": {
-    "name": "Sports",
-    "slug": "sports",
-    "image": "",
-    "icon": "bi bi-trophy",
-    "description": "Sports and fitness equipment",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:58.790Z"
-  }
-},
-{
-  "model": "shop.category",
-  "pk": 9,
-  "fields": {
-    "name": "Gadgets",
-    "slug": "gadgets",
-    "image": "",
-    "icon": "bi bi-cpu",
-    "description": "Smart gadgets and accessories",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:58.794Z"
-  }
-},
-{
-  "model": "shop.category",
-  "pk": 10,
-  "fields": {
-    "name": "Accessories",
-    "slug": "accessories",
-    "image": "",
-    "icon": "bi bi-watch",
-    "description": "Watches, bags and accessories",
-    "is_active": true,
-    "created_at": "2026-09-10T05:54:58.798Z"
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 1,
-  "fields": {
-    "name": "Apple",
-    "slug": "apple",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 2,
-  "fields": {
-    "name": "Samsung",
-    "slug": "samsung",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 3,
-  "fields": {
-    "name": "Sony",
-    "slug": "sony",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 4,
-  "fields": {
-    "name": "Nike",
-    "slug": "nike",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 5,
-  "fields": {
-    "name": "Adidas",
-    "slug": "adidas",
-    "logo": "brands/OIP_1.jpg",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 6,
-  "fields": {
-    "name": "Puma",
-    "slug": "puma",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 7,
-  "fields": {
-    "name": "H&M",
-    "slug": "hm",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 8,
-  "fields": {
-    "name": "Zara",
-    "slug": "zara",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 9,
-  "fields": {
-    "name": "L'Oreal",
-    "slug": "loreal",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 10,
-  "fields": {
-    "name": "Lakme",
-    "slug": "lakme",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 11,
-  "fields": {
-    "name": "Philips",
-    "slug": "philips",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 12,
-  "fields": {
-    "name": "Boat",
-    "slug": "boat",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 13,
-  "fields": {
-    "name": "OnePlus",
-    "slug": "oneplus",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 14,
-  "fields": {
-    "name": "Realme",
-    "slug": "realme",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 15,
-  "fields": {
-    "name": "Xiaomi",
-    "slug": "xiaomi",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 16,
-  "fields": {
-    "name": "Titan",
-    "slug": "titan",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.brand",
-  "pk": 17,
-  "fields": {
-    "name": "Fastrack",
-    "slug": "fastrack",
-    "logo": "",
-    "is_active": true
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 1,
-  "fields": {
-    "name": "iPhone 15 Pro Max",
-    "slug": "iphone-15-pro-max",
-    "category": 1,
-    "brand": 1,
-    "description": "The most powerful iPhone ever. Features the A17 Pro chip, titanium design, and a 48MP main camera system.",
-    "specifications": "Chip: A17 Pro\nStorage: 256GB\nDisplay: 6.7\" Super Retina XDR\nCamera: 48MP Main\nBattery: 4422mAh",
-    "price": "134900.00",
-    "discount_price": "119900.00",
-    "stock": 25,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": true,
-    "rating": "4.8",
-    "review_count": 52,
-    "sold_count": 385,
-    "created_at": "2026-09-10T05:56:05.864Z",
-    "updated_at": "2026-09-10T05:56:05.864Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 2,
-  "fields": {
-    "name": "Samsung Galaxy S24 Ultra",
-    "slug": "samsung-galaxy-s24-ultra",
-    "category": 1,
-    "brand": 2,
-    "description": "Next level Galaxy AI with Galaxy S24 Ultra. Features a 200MP camera, S Pen, and titanium frame.",
-    "specifications": "Chip: Snapdragon 8 Gen 3\nStorage: 256GB\nDisplay: 6.8\" AMOLED\nCamera: 200MP",
-    "price": "124999.00",
-    "discount_price": "109999.00",
-    "stock": 30,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": true,
-    "rating": "4.7",
-    "review_count": 92,
-    "sold_count": 96,
-    "created_at": "2026-09-10T05:56:05.869Z",
-    "updated_at": "2026-09-10T05:56:05.869Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 3,
-  "fields": {
-    "name": "Sony WH-1000XM5 Headphones",
-    "slug": "sony-wh-1000xm5-headphones",
-    "category": 1,
-    "brand": 3,
-    "description": "Industry-leading noise canceling with exceptional sound quality. 30-hour battery life.",
-    "specifications": "Type: Over-ear\nBattery: 30 hours\nDriver: 30mm\nBluetooth: 5.2",
-    "price": "29990.00",
-    "discount_price": "24990.00",
-    "stock": 50,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": false,
-    "rating": "4.9",
-    "review_count": 194,
-    "sold_count": 120,
-    "created_at": "2026-09-10T05:56:05.874Z",
-    "updated_at": "2026-09-10T05:56:05.874Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 4,
-  "fields": {
-    "name": "Apple MacBook Air M3",
-    "slug": "apple-macbook-air-m3",
-    "category": 1,
-    "brand": 1,
-    "description": "Supercharged by the M3 chip. Blazing-fast performance in an ultra-thin design.",
-    "specifications": "Chip: Apple M3\nRAM: 8GB\nStorage: 256GB SSD\nDisplay: 13.6\" Liquid Retina",
-    "price": "114900.00",
-    "discount_price": "104900.00",
-    "stock": 15,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": false,
-    "rating": "4.9",
-    "review_count": 106,
-    "sold_count": 77,
-    "created_at": "2026-09-10T05:56:05.879Z",
-    "updated_at": "2026-09-10T05:56:05.879Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 5,
-  "fields": {
-    "name": "boAt Rockerz 450 Pro",
-    "slug": "boat-rockerz-450-pro",
-    "category": 1,
-    "brand": 12,
-    "description": "Wireless Bluetooth headphones with 70 hours playback, deep bass and foldable design.",
-    "specifications": "Battery: 70 hours\nDriver: 40mm\nBluetooth: 5.0",
-    "price": "2499.00",
-    "discount_price": "1299.00",
-    "stock": 200,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": true,
-    "rating": "4.2",
-    "review_count": 10,
-    "sold_count": 180,
-    "created_at": "2026-09-10T05:56:05.884Z",
-    "updated_at": "2026-09-10T05:56:05.884Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 6,
-  "fields": {
-    "name": "OnePlus 12 5G",
-    "slug": "oneplus-12-5g",
-    "category": 1,
-    "brand": 13,
-    "description": "Flagship performance with Snapdragon 8 Gen 3, 50W wireless charging, and Hasselblad cameras.",
-    "specifications": "Chip: Snapdragon 8 Gen 3\nStorage: 256GB\nDisplay: 6.82\" AMOLED\nCharging: 100W",
-    "price": "64999.00",
-    "discount_price": "57999.00",
-    "stock": 40,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": false,
-    "rating": "4.6",
-    "review_count": 166,
-    "sold_count": 248,
-    "created_at": "2026-09-10T05:56:05.890Z",
-    "updated_at": "2026-09-10T05:56:05.890Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 7,
-  "fields": {
-    "name": "Nike Air Max 270",
-    "slug": "nike-air-max-270",
-    "category": 5,
-    "brand": 4,
-    "description": "The Nike Air Max 270 delivers a big, bold look with an ultra-comfortable Air unit.",
-    "specifications": "",
-    "price": "11995.00",
-    "discount_price": "8995.00",
-    "stock": 75,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": true,
-    "rating": "4.5",
-    "review_count": 164,
-    "sold_count": 302,
-    "created_at": "2026-09-10T05:56:05.897Z",
-    "updated_at": "2026-09-10T05:56:05.897Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 8,
-  "fields": {
-    "name": "Adidas Ultraboost 23",
-    "slug": "adidas-ultraboost-23",
-    "category": 5,
-    "brand": 5,
-    "description": "Experience incredible energy return and comfort with Boost technology.",
-    "specifications": "",
-    "price": "17999.00",
-    "discount_price": "13999.00",
-    "stock": 60,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": false,
-    "rating": "4.7",
-    "review_count": 103,
-    "sold_count": 207,
-    "created_at": "2026-09-10T05:56:05.903Z",
-    "updated_at": "2026-09-10T05:56:05.903Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 9,
-  "fields": {
-    "name": "Puma Men's Polo T-Shirt",
-    "slug": "puma-mens-polo-t-shirt",
-    "category": 3,
-    "brand": 6,
-    "description": "Classic polo t-shirt with moisture-wicking fabric for all-day comfort.",
-    "specifications": "",
-    "price": "2499.00",
-    "discount_price": "1499.00",
-    "stock": 150,
-    "is_active": true,
-    "is_featured": false,
-    "is_new_arrival": true,
-    "rating": "4.3",
-    "review_count": 16,
-    "sold_count": 154,
-    "created_at": "2026-09-10T05:56:05.909Z",
-    "updated_at": "2026-09-10T05:56:05.909Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 10,
-  "fields": {
-    "name": "Zara Women's Floral Dress",
-    "slug": "zara-womens-floral-dress",
-    "category": 4,
-    "brand": 8,
-    "description": "Elegant floral print dress perfect for casual and semi-formal occasions.",
-    "specifications": "",
-    "price": "3999.00",
-    "discount_price": "2499.00",
-    "stock": 79,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": true,
-    "rating": "4.4",
-    "review_count": 196,
-    "sold_count": 97,
-    "created_at": "2026-09-10T05:56:05.915Z",
-    "updated_at": "2026-09-10T05:56:05.915Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 11,
-  "fields": {
-    "name": "H&M Slim Fit Jeans",
-    "slug": "hm-slim-fit-jeans",
-    "category": 3,
-    "brand": 7,
-    "description": "Modern slim fit jeans with stretch fabric for maximum comfort.",
-    "specifications": "",
-    "price": "2999.00",
-    "discount_price": "1799.00",
-    "stock": 120,
-    "is_active": true,
-    "is_featured": false,
-    "is_new_arrival": true,
-    "rating": "4.1",
-    "review_count": 163,
-    "sold_count": 131,
-    "created_at": "2026-09-10T05:56:05.921Z",
-    "updated_at": "2026-09-10T05:56:05.921Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 12,
-  "fields": {
-    "name": "Titan Raga Women's Watch",
-    "slug": "titan-raga-womens-watch",
-    "category": 10,
-    "brand": 16,
-    "description": "Elegant women's watch with rose gold plating and leather strap.",
-    "specifications": "",
-    "price": "8995.00",
-    "discount_price": "6995.00",
-    "stock": 45,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": false,
-    "rating": "4.6",
-    "review_count": 9,
-    "sold_count": 27,
-    "created_at": "2026-09-10T05:56:05.926Z",
-    "updated_at": "2026-09-10T05:56:05.926Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 13,
-  "fields": {
-    "name": "Fastrack Casual Watch",
-    "slug": "fastrack-casual-watch",
-    "category": 10,
-    "brand": 17,
-    "description": "Stylish casual watch with silicon strap and water-resistant design.",
-    "specifications": "",
-    "price": "2995.00",
-    "discount_price": "1995.00",
-    "stock": 90,
-    "is_active": true,
-    "is_featured": false,
-    "is_new_arrival": true,
-    "rating": "4.2",
-    "review_count": 49,
-    "sold_count": 447,
-    "created_at": "2026-09-10T05:56:05.932Z",
-    "updated_at": "2026-09-10T05:56:05.932Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 14,
-  "fields": {
-    "name": "LOreal Revitalift Face Cream",
-    "slug": "loreal-revitalift-face-cream",
-    "category": 6,
-    "brand": 9,
-    "description": "Anti-aging face cream with Pro-Retinol and Centella. Visibly reduces wrinkles.",
-    "specifications": "",
-    "price": "899.00",
-    "discount_price": "649.00",
-    "stock": 200,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": false,
-    "rating": "4.4",
-    "review_count": 189,
-    "sold_count": 119,
-    "created_at": "2026-09-10T05:56:05.938Z",
-    "updated_at": "2026-09-10T05:56:05.938Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 15,
-  "fields": {
-    "name": "Lakme Absolute Lipstick",
-    "slug": "lakme-absolute-lipstick",
-    "category": 6,
-    "brand": 10,
-    "description": "Long-lasting matte lipstick in 30+ shades. Up to 12 hours wear.",
-    "specifications": "",
-    "price": "699.00",
-    "discount_price": "499.00",
-    "stock": 300,
-    "is_active": true,
-    "is_featured": false,
-    "is_new_arrival": true,
-    "rating": "4.3",
-    "review_count": 94,
-    "sold_count": 57,
-    "created_at": "2026-09-10T05:56:05.944Z",
-    "updated_at": "2026-09-10T05:56:05.944Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 16,
-  "fields": {
-    "name": "Adidas Yoga Mat Pro",
-    "slug": "adidas-yoga-mat-pro",
-    "category": 8,
-    "brand": 5,
-    "description": "Premium non-slip yoga mat with alignment lines and carrying strap.",
-    "specifications": "",
-    "price": "3999.00",
-    "discount_price": "2499.00",
-    "stock": 100,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": false,
-    "rating": "4.5",
-    "review_count": 143,
-    "sold_count": 300,
-    "created_at": "2026-09-10T05:56:05.950Z",
-    "updated_at": "2026-09-10T06:42:23.082Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 17,
-  "fields": {
-    "name": "Nike Dri-FIT Training Shorts",
-    "slug": "nike-dri-fit-training-shorts",
-    "category": 8,
-    "brand": 4,
-    "description": "Lightweight training shorts with sweat-wicking Dri-FIT technology.",
-    "specifications": "",
-    "price": "2499.00",
-    "discount_price": "1799.00",
-    "stock": 130,
-    "is_active": true,
-    "is_featured": false,
-    "is_new_arrival": true,
-    "rating": "4.4",
-    "review_count": 53,
-    "sold_count": 418,
-    "created_at": "2026-09-10T05:56:05.957Z",
-    "updated_at": "2026-09-10T05:56:05.957Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 18,
-  "fields": {
-    "name": "Philips Air Fryer HD9252",
-    "slug": "philips-air-fryer-hd9252",
-    "category": 7,
-    "brand": 11,
-    "description": "Rapid Air Technology air fryer. Fry, bake, grill with little to no oil.",
-    "specifications": "",
-    "price": "9999.00",
-    "discount_price": "6999.00",
-    "stock": 35,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": false,
-    "rating": "4.6",
-    "review_count": 93,
-    "sold_count": 406,
-    "created_at": "2026-09-10T05:56:05.963Z",
-    "updated_at": "2026-09-10T05:56:05.963Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 19,
-  "fields": {
-    "name": "Prestige Induction Cooktop",
-    "slug": "prestige-induction-cooktop",
-    "category": 7,
-    "brand": 11,
-    "description": "Energy-efficient 2000W induction cooktop with 8 power levels.",
-    "specifications": "",
-    "price": "3499.00",
-    "discount_price": "2299.00",
-    "stock": 55,
-    "is_active": true,
-    "is_featured": false,
-    "is_new_arrival": true,
-    "rating": "4.3",
-    "review_count": 52,
-    "sold_count": 408,
-    "created_at": "2026-09-10T05:56:05.970Z",
-    "updated_at": "2026-09-10T05:56:05.970Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 20,
-  "fields": {
-    "name": "Sony PlayStation 5",
-    "slug": "sony-playstation-5",
-    "category": 9,
-    "brand": 3,
-    "description": "Next-gen gaming with lightning-fast SSD, 3D audio, and DualSense controller.",
-    "specifications": "CPU: AMD Zen 2\nGPU: 10.28 TFLOPS\nStorage: 825GB SSD",
-    "price": "54990.00",
-    "discount_price": "49990.00",
-    "stock": 10,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": false,
-    "rating": "4.9",
-    "review_count": 194,
-    "sold_count": 144,
-    "created_at": "2026-09-10T05:56:05.976Z",
-    "updated_at": "2026-09-10T05:56:05.976Z"
-  }
-},
-{
-  "model": "shop.product",
-  "pk": 21,
-  "fields": {
-    "name": "Apple iPad Air (2024)",
-    "slug": "apple-ipad-air-2024",
-    "category": 9,
-    "brand": 1,
-    "description": "Powerful. Colorful. Wonderful. M2 chip for superfast performance.",
-    "specifications": "",
-    "price": "59900.00",
-    "discount_price": "54900.00",
-    "stock": 19,
-    "is_active": true,
-    "is_featured": true,
-    "is_new_arrival": true,
-    "rating": "4.8",
-    "review_count": 9,
-    "sold_count": 165,
-    "created_at": "2026-09-10T05:56:05.983Z",
-    "updated_at": "2026-09-10T06:36:20.964Z"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 1,
-  "fields": {
-    "product": 21,
-    "image": "products/OIP_1.webp",
-    "is_primary": false,
-    "alt_text": ""
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 2,
-  "fields": {
-    "product": 16,
-    "image": "products/OIP_1.jpg",
-    "is_primary": false,
-    "alt_text": ""
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 3,
-  "fields": {
-    "product": 20,
-    "image": "products/sony-playstation-5.jpg",
-    "is_primary": true,
-    "alt_text": "Sony PlayStation 5"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 4,
-  "fields": {
-    "product": 19,
-    "image": "products/prestige-induction-cooktop.jpg",
-    "is_primary": true,
-    "alt_text": "Prestige Induction Cooktop"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 5,
-  "fields": {
-    "product": 18,
-    "image": "products/philips-air-fryer-hd9252.jpg",
-    "is_primary": true,
-    "alt_text": "Philips Air Fryer HD9252"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 6,
-  "fields": {
-    "product": 15,
-    "image": "products/lakme-absolute-lipstick.jpg",
-    "is_primary": true,
-    "alt_text": "Lakme Absolute Lipstick"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 7,
-  "fields": {
-    "product": 14,
-    "image": "products/loreal-revitalift-face-cream.jpg",
-    "is_primary": true,
-    "alt_text": "LOreal Revitalift Face Cream"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 8,
-  "fields": {
-    "product": 13,
-    "image": "products/fastrack-casual-watch.jpg",
-    "is_primary": true,
-    "alt_text": "Fastrack Casual Watch"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 9,
-  "fields": {
-    "product": 12,
-    "image": "products/titan-raga-womens-watch.jpg",
-    "is_primary": true,
-    "alt_text": "Titan Raga Women's Watch"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 10,
-  "fields": {
-    "product": 11,
-    "image": "products/hm-slim-fit-jeans.jpg",
-    "is_primary": true,
-    "alt_text": "H&M Slim Fit Jeans"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 11,
-  "fields": {
-    "product": 10,
-    "image": "products/zara-womens-floral-dress.jpg",
-    "is_primary": true,
-    "alt_text": "Zara Women's Floral Dress"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 12,
-  "fields": {
-    "product": 9,
-    "image": "products/puma-mens-polo-t-shirt.jpg",
-    "is_primary": true,
-    "alt_text": "Puma Men's Polo T-Shirt"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 13,
-  "fields": {
-    "product": 8,
-    "image": "products/adidas-ultraboost-23.jpg",
-    "is_primary": true,
-    "alt_text": "Adidas Ultraboost 23"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 14,
-  "fields": {
-    "product": 7,
-    "image": "products/nike-air-max-270.jpg",
-    "is_primary": true,
-    "alt_text": "Nike Air Max 270"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 15,
-  "fields": {
-    "product": 6,
-    "image": "products/oneplus-12-5g.jpg",
-    "is_primary": true,
-    "alt_text": "OnePlus 12 5G"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 16,
-  "fields": {
-    "product": 5,
-    "image": "products/boat-rockerz-450-pro.jpg",
-    "is_primary": true,
-    "alt_text": "boAt Rockerz 450 Pro"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 17,
-  "fields": {
-    "product": 4,
-    "image": "products/apple-macbook-air-m3.jpg",
-    "is_primary": true,
-    "alt_text": "Apple MacBook Air M3"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 18,
-  "fields": {
-    "product": 3,
-    "image": "products/sony-wh-1000xm5-headphones.jpg",
-    "is_primary": true,
-    "alt_text": "Sony WH-1000XM5 Headphones"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 19,
-  "fields": {
-    "product": 2,
-    "image": "products/samsung-galaxy-s24-ultra.jpg",
-    "is_primary": true,
-    "alt_text": "Samsung Galaxy S24 Ultra"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 20,
-  "fields": {
-    "product": 1,
-    "image": "products/iphone-15-pro-max.jpg",
-    "is_primary": true,
-    "alt_text": "iPhone 15 Pro Max"
-  }
-},
-{
-  "model": "shop.productimage",
-  "pk": 21,
-  "fields": {
-    "product": 17,
-    "image": "products/nike-shorts.jpg",
-    "is_primary": true,
-    "alt_text": ""
-  }
-}
 ]
