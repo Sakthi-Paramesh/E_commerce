@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config
+import cloudinary
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -17,6 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'crispy_forms',
     'crispy_bootstrap5',
     'shop',
@@ -98,8 +101,21 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# Cloudinary for media files (images) in production
+CLOUDINARY_URL = config('CLOUDINARY_URL', default='')
+
+if CLOUDINARY_URL:
+    # Production: store all media/images on Cloudinary
+    cloudinary.config(
+        cloudinary_url=CLOUDINARY_URL
+    )
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    MEDIA_URL = '/media/'  # kept for compatibility
+    MEDIA_ROOT = BASE_DIR / 'media'
+else:
+    # Local development: use local media folder
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
