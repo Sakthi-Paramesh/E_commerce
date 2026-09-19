@@ -14,11 +14,11 @@
   </div>
   <div class="container">
     <div class="row align-items-center min-vh-85">
-      <div class="col-lg-6 hero-content animate__animated animate__fadeInLeft">
-        <span class="hero-badge"><i class="bi bi-lightning-fill me-1"></i>New Season Sale — Up to 70% Off</span>
-        <h1 class="hero-title">Discover <span class="gradient-text">Premium</span> Products for Every Lifestyle</h1>
-        <p class="hero-subtitle">From cutting-edge electronics to trendy fashion — find everything you love, at prices you'll adore. Free shipping on orders over ₹999.</p>
-        <div class="hero-actions d-flex gap-3 flex-wrap">
+      <div class="col-lg-6 hero-content">
+        <span class="hero-badge" data-aos="fade-down" data-aos-delay="100"><i class="bi bi-lightning-fill me-1 text-warning animate__animated animate__flash animate__infinite animate__slower"></i>New Season Sale — Up to 70% Off</span>
+        <h1 class="hero-title" data-aos="fade-right" data-aos-delay="300">Discover <span class="gradient-text">Premium</span> Products for Every Lifestyle</h1>
+        <p class="hero-subtitle" data-aos="fade-right" data-aos-delay="500">From cutting-edge electronics to trendy fashion — find everything you love, at prices you'll adore. Free shipping on orders over ₹999.</p>
+        <div class="hero-actions d-flex gap-3 flex-wrap" data-aos="fade-up" data-aos-delay="700">
           <a href="{% url 'shop' %}" class="btn sw-btn-primary btn-lg px-5">
             <i class="bi bi-bag-fill me-2"></i>Shop Now
           </a>
@@ -26,7 +26,7 @@
             <i class="bi bi-fire me-2"></i>Explore Products
           </a>
         </div>
-        <div class="hero-stats d-flex gap-4 mt-5">
+        <div class="hero-stats d-flex gap-4 mt-5" data-aos="fade-up" data-aos-delay="900">
           <div class="stat-item">
             <div class="stat-number">50K+</div>
             <div class="stat-label">Products</div>
@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 d-none d-lg-block text-center animate__animated animate__fadeInRight">
+      <div class="col-lg-6 d-none d-lg-block text-center" data-aos="zoom-in" data-aos-delay="400">
         <div class="hero-image-wrap">
           <div class="hero-circle"></div>
           <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80" alt="Premium Shopping" class="hero-img" />
@@ -68,7 +68,7 @@
 <!-- ===== CATEGORIES SECTION ===== -->
 <section class="sw-section bg-light-gray" id="categories">
   <div class="container">
-    <div class="section-header text-center mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
       <span class="section-badge">Browse</span>
       <h2 class="section-title">Shop by <span class="gradient-text">Category</span></h2>
       <p class="section-subtitle">Explore our wide range of product categories</p>
@@ -76,7 +76,7 @@
 
     <div class="row g-3">
       {% for category in categories %}
-      <div class="col-6 col-md-4 col-lg-2">
+      <div class="col-6 col-md-4 col-lg-2" data-aos="zoom-in" data-aos-delay="100">
         <a href="{% url 'shop' %}?category={{ category.slug }}" class="category-card">
           <div class="category-icon-wrap">
             {% if category.icon %}
@@ -105,7 +105,7 @@
 <!-- ===== FEATURED PRODUCTS ===== -->
 <section class="sw-section" id="featured">
   <div class="container">
-    <div class="section-header d-flex align-items-center justify-content-between mb-5">
+    <div class="section-header d-flex align-items-center justify-content-between mb-5" data-aos="fade-up">
       <div>
         <span class="section-badge">Handpicked</span>
         <h2 class="section-title mb-0">Featured <span class="gradient-text">Products</span></h2>
@@ -130,10 +130,10 @@
 <!-- ===== OFFER BANNER ===== -->
 <section class="sw-offer-banner">
   <div class="container">
-    <div class="offer-card">
+    <div class="offer-card" data-aos="flip-up" data-aos-duration="1000">
       <div class="row align-items-center">
-        <div class="col-lg-7">
-          <span class="offer-tag">🔥 Limited Time Offer</span>
+        <div class="col-lg-7" data-aos="fade-right" data-aos-delay="300">
+          <span class="offer-tag animate__animated animate__pulse animate__infinite">🔥 Limited Time Offer</span>
           <h2 class="offer-title">Mega Sale — Up to <span>70% OFF</span></h2>
           <p class="offer-subtitle">Don't miss out on our biggest sale of the season. Premium products at unbelievable prices.</p>
           <div class="countdown d-flex gap-3 my-4" id="countdown">
@@ -149,8 +149,8 @@
             <i class="bi bi-bag-fill me-2"></i>Shop the Sale
           </a>
         </div>
-        <div class="col-lg-5 d-none d-lg-block text-center">
-          <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=500&q=80" alt="Mega Sale" class="offer-img" />
+        <div class="col-lg-5 d-none d-lg-block text-center" data-aos="fade-left" data-aos-delay="500">
+          <img src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=500&q=80" alt="Mega Sale" class="offer-img animate__animated animate__pulse animate__infinite animate__slower" />
         </div>
       </div>
     </div>
@@ -160,9 +160,9 @@
 <!-- ===== NEW ARRIVALS ===== -->
 <section class="sw-section bg-light-gray" id="new-arrivals">
   <div class="container">
-    <div class="section-header d-flex align-items-center justify-content-between mb-5">
+    <div class="section-header d-flex align-items-center justify-content-between mb-5" data-aos="fade-up">
       <div>
-        <span class="section-badge">Just In</span>
+        <span class="section-badge animate__animated animate__flash animate__infinite animate__slower">Just In</span>
         <h2 class="section-title mb-0">New <span class="gradient-text">Arrivals</span></h2>
       </div>
       <a href="{% url 'shop' %}?is_new=true" class="btn sw-btn-outline">View All <i class="bi bi-arrow-right ms-1"></i></a>
@@ -182,7 +182,7 @@
 <!-- ===== BEST SELLERS ===== -->
 <section class="sw-section" id="best-sellers">
   <div class="container">
-    <div class="section-header d-flex align-items-center justify-content-between mb-5">
+    <div class="section-header d-flex align-items-center justify-content-between mb-5" data-aos="fade-up">
       <div>
         <span class="section-badge">Top Picks</span>
         <h2 class="section-title mb-0">Best <span class="gradient-text">Sellers</span></h2>
@@ -204,33 +204,33 @@
 <!-- ===== WHY CHOOSE US ===== -->
 <section class="sw-section bg-light-gray" id="about-section">
   <div class="container">
-    <div class="section-header text-center mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
       <span class="section-badge">Our Promise</span>
       <h2 class="section-title">Why Choose <span class="gradient-text">ShopWave?</span></h2>
     </div>
     <div class="row g-4">
-      <div class="col-md-6 col-lg-3">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
         <div class="feature-card">
           <div class="feature-icon-wrap"><i class="bi bi-truck-front-fill feature-icon"></i></div>
           <h5 class="feature-title">Free Shipping</h5>
           <p class="feature-text">Free delivery on orders above ₹999. Fast, reliable, nationwide shipping.</p>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
         <div class="feature-card">
           <div class="feature-icon-wrap"><i class="bi bi-shield-lock-fill feature-icon"></i></div>
           <h5 class="feature-title">Secure Payment</h5>
           <p class="feature-text">100% secure transactions with industry-standard encryption and trusted gateways.</p>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
         <div class="feature-card">
           <div class="feature-icon-wrap"><i class="bi bi-arrow-counterclockwise feature-icon"></i></div>
           <h5 class="feature-title">Easy Returns</h5>
           <p class="feature-text">Not satisfied? Return within 30 days for a full refund — no questions asked.</p>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
         <div class="feature-card">
           <div class="feature-icon-wrap"><i class="bi bi-headset feature-icon"></i></div>
           <h5 class="feature-title">24/7 Support</h5>
@@ -244,7 +244,7 @@
 <!-- ===== TESTIMONIALS ===== -->
 <section class="sw-section" id="reviews">
   <div class="container">
-    <div class="section-header text-center mb-5">
+    <div class="section-header text-center mb-5" data-aos="fade-up">
       <span class="section-badge">Reviews</span>
       <h2 class="section-title">What Our <span class="gradient-text">Customers Say</span></h2>
     </div>
@@ -297,8 +297,8 @@
 <!-- ===== NEWSLETTER ===== -->
 <section class="sw-newsletter">
   <div class="container">
-    <div class="newsletter-card text-center">
-      <div class="newsletter-icon"><i class="bi bi-envelope-heart-fill"></i></div>
+    <div class="newsletter-card text-center" data-aos="zoom-in-up" data-aos-duration="1000">
+      <div class="newsletter-icon"><i class="bi bi-envelope-heart-fill animate__animated animate__pulse animate__infinite"></i></div>
       <h2 class="newsletter-title">Stay in the Loop!</h2>
       <p class="newsletter-subtitle">Subscribe to get exclusive deals, new arrivals, and flash sale alerts directly to your inbox.</p>
       <form class="newsletter-form d-flex gap-3 justify-content-center flex-wrap" onsubmit="subscribeNewsletter(event)">
