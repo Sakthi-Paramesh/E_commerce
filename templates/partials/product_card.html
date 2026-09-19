@@ -4,8 +4,7 @@
     <!-- Wishlist -->
     {% if user.is_authenticated %}
     <button class="wishlist-btn {% if product.pk in wishlist_product_ids %}active{% endif %}"
-      data-product-id="{{ product.pk }}"
-      onclick="toggleWishlist(this.dataset.productId, this)" title="Add to Wishlist">
+      data-product-id="{{ product.pk }}" onclick="toggleWishlist(this.dataset.productId, this)" title="Add to Wishlist">
       <i class="bi {% if product.pk in wishlist_product_ids %}bi-heart-fill{% else %}bi-heart{% endif %}"></i>
     </button>
     {% endif %}
@@ -75,8 +74,7 @@
 
       <!-- Add to Cart -->
       <button class="btn sw-btn-add-cart w-100 mt-2 {% if not product.is_in_stock %}disabled{% endif %}"
-        data-product-id="{{ product.pk }}"
-        onclick="addToCart(this.dataset.productId, 1, this)">
+        data-product-id="{{ product.pk }}" onclick="addToCart(this.dataset.productId, 1, this)">
         {% if product.is_in_stock %}
         <i class="bi bi-cart-plus me-1"></i>Add to Cart
         {% else %}
@@ -86,8 +84,7 @@
 
       <!-- Buy Now -->
       <button class="btn sw-btn-buy-now w-100 mt-1 {% if not product.is_in_stock %}disabled{% endif %}"
-        data-product-id="{{ product.pk }}"
-        onclick="buyNow(this.dataset.productId, this)">
+        data-product-id="{{ product.pk }}" onclick="buyNow(this.dataset.productId, this)">
         <i class="bi bi-lightning-fill me-1"></i>Buy Now
       </button>
     </div>
